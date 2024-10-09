@@ -10,6 +10,12 @@ First run:
 
 npm install react-router-dom
 
+and
+
+npm install @mui/material @emotion/react @emotion/styled
+
+These are required for multipage setup and material ui.
+
 then you can run:
 
 ### `npm start`
