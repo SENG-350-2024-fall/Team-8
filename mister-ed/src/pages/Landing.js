@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Landing() {
   return (
     <div>
-      <h1>Welcome to the Landing Page</h1>
+      <h1>Welcome to Mister ED</h1>
       <Link to="/login" style={{ textDecoration: 'none' }}>
         <Button 
           variant="contained" 
