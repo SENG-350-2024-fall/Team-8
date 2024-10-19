@@ -20,7 +20,7 @@ function Login() {
     if (foundUser) {
       console.log('Login successful:', foundUser);
       setError('');
-      navigate('/landing'); // Redirect to landing page upon successful login
+      navigate('/home'); // Redirect to landing page upon successful login
     } else {
       setError('Invalid email or password. Please try again.');
     }
