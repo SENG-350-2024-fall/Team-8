@@ -57,10 +57,11 @@ function Login() {
           Submit
         </Button>
       </form>
-      <Link to="/landing" style={{ textDecoration: 'none', display: 'block', marginTop: '20px' }}>
+      <Link to="/landing" style={{ textDecoration: 'none', width: '100%', display: 'block' }}>
         <Button 
           variant="contained" 
-          color="error"
+          color="error" 
+          style={{ marginTop: '20px', width: '400px' }}  // Matching width for Back to Landing button
         >
           Back to Landing
         </Button>
