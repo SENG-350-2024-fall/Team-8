@@ -12,7 +12,7 @@ function Landing() {
           color="error" 
           fullWidth
         >
-          Go to Login
+          Login
         </Button>
       </Link>
       <Link to="/create-account" style={{ textDecoration: 'none', width: '100%' }}>
