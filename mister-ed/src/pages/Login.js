@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import { SAMPLE_PATIENTS } from './sampledb';  // Import your sample data
+import { SAMPLE_PATIENTS, SAMPLE_NURSES } from './sampledb';  // Import your sample data
 
 function Login() {
+
+  const [accountType, setAccountType] = useState('Patient');  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,8 +14,9 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Find a matching user in the SAMPLE_PATIENTS data
-    const foundUser = SAMPLE_PATIENTS.find(
+    const sampleData = accountType === 'Patient' ? SAMPLE_PATIENTS : SAMPLE_NURSES;
+
+    const foundUser = sampleData.find(
       (user) => user.email === email && user.password === password
     );
 
@@ -30,6 +33,20 @@ function Login() {
     <div>
       <h1>Login Page</h1>
       <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto' }}>
+      <FormControl fullWidth margin="normal" variant="outlined">
+          <InputLabel id="account-type-label" shrink>
+            Account Type
+          </InputLabel>
+          <Select
+            labelId="account-type-label"
+            value={accountType}
+            onChange={(e) => setAccountType(e.target.value)}
+            fullWidth
+          >
+            <MenuItem value="Patient">Patient</MenuItem>
+            <MenuItem value="Nurse">Nurse</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           label="Email"
           variant="outlined"

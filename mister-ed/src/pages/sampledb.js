@@ -11,3 +11,15 @@ export const SAMPLE_PATIENTS = [
     { id: '10', email: 'testuser@email.com', password: 'password', name: 'Test User', age: '40', postal: 'V0J 0K1' }
   ];
   
+  export const SAMPLE_NURSES = [
+    { id: '1', email: 'nurse.alex@example.com', password: 'nurseAlex123', name: 'Alex Thompson', hospital: 'Victoria General' },
+    { id: '2', email: 'nurse.lucy@example.com', password: 'nurseLucy456', name: 'Lucy Evans', hospital: 'Royal Jubilee' },
+    { id: '3', email: 'nurse.james@example.com', password: 'nurseJames789', name: 'James White', hospital: 'Victoria General' },
+    { id: '4', email: 'nurse.olivia@example.com', password: 'nurseOlivia123', name: 'Olivia Harris', hospital: 'Royal Jubilee' },
+    { id: '5', email: 'nurse.michael@example.com', password: 'nurseMichael456', name: 'Michael Clark', hospital: 'Victoria General' },
+    { id: '6', email: 'nurse.chloe@example.com', password: 'nurseChloe789', name: 'Chloe Lewis', hospital: 'Royal Jubilee' },
+    { id: '7', email: 'nurse.david@example.com', password: 'nurseDavid123', name: 'David Robinson', hospital: 'Victoria General' },
+    { id: '8', email: 'nurse.sarah@example.com', password: 'nurseSarah456', name: 'Sarah Walker', hospital: 'Royal Jubilee' },
+    { id: '9', email: 'nurse.daniel@example.com', password: 'nurseDaniel789', name: 'Daniel King', hospital: 'Victoria General' },
+    { id: '10', email: 'nurse.julia@example.com', password: 'nurseJulia123', name: 'Julia Scott', hospital: 'Royal Jubilee' }
+];
