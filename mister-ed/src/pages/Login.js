@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import { SAMPLE_PATIENTS, SAMPLE_NURSES } from './sampledb';  // Import your sample data
+import { SAMPLE_PATIENTS, SAMPLE_NURSES, SAMPLE_EMTS, SAMPLE_DOCTORS, SAMPLE_ADMINS } from './sampledb';  // Import your sample data
 
 function Login() {
 
@@ -14,9 +14,20 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const sampleData = accountType === 'Patient' ? SAMPLE_PATIENTS : SAMPLE_NURSES;
+    let sampleData;
+    if (accountType === 'Patient') {
+      sampleData = SAMPLE_PATIENTS;
+    } else if (accountType === 'Nurse') {
+      sampleData = SAMPLE_NURSES;
+    } else if (accountType === 'EMT') {
+      sampleData = SAMPLE_EMTS;
+    } else if (accountType === 'Doctor'){
+      sampleData = SAMPLE_DOCTORS;
+    } else if (accountType === 'Admin'){
+      sampleData = SAMPLE_ADMINS
+    }
 
-    const foundUser = sampleData.find(
+    const foundUser = sampleData?.find(
       (user) => user.email === email && user.password === password
     );
 
@@ -45,6 +56,9 @@ function Login() {
           >
             <MenuItem value="Patient">Patient</MenuItem>
             <MenuItem value="Nurse">Nurse</MenuItem>
+            <MenuItem value="EMT">EMT</MenuItem>
+            <MenuItem value="Doctor">Doctor</MenuItem>
+            <MenuItem value="Admin">Admin</MenuItem>
           </Select>
         </FormControl>
         <TextField
