@@ -23,3 +23,37 @@ export const SAMPLE_PATIENTS = [
     { id: '9', email: 'nurse.daniel@example.com', password: 'nurseDaniel789', name: 'Daniel King', hospital: 'Victoria General' },
     { id: '10', email: 'nurse.julia@example.com', password: 'nurseJulia123', name: 'Julia Scott', hospital: 'Royal Jubilee' }
 ];
+
+export const SAMPLE_EMTS = [
+  { id: '1', email: 'jack.taylor@example.com', password: 'jackSecure123', name: 'Jack Taylor' },
+  { id: '2', email: 'sarah.lee@example.com', password: 'sarahPass456', name: 'Sarah Lee' },
+  { id: '3', email: 'michael.brown@example.com', password: 'michaelSafe789', name: 'Michael Brown' },
+  { id: '4', email: 'linda.green@example.com', password: 'lindaPass123', name: 'Linda Green' },
+  { id: '5', email: 'david.king@example.com', password: 'davidSecure456', name: 'David King' },
+  { id: '6', email: 'amy.jones@example.com', password: 'amyPass789', name: 'Amy Jones' },
+  { id: '7', email: 'peter.white@example.com', password: 'peterSecure123', name: 'Peter White' },
+  { id: '8', email: 'rachel.adams@example.com', password: 'rachelPass456', name: 'Rachel Adams' },
+  { id: '9', email: 'chris.evans@example.com', password: 'chrisSafe789', name: 'Chris Evans' },
+  { id: '10', email: 'natalie.moore@example.com', password: 'nataliePass123', name: 'Natalie Moore' }
+];
+
+export const SAMPLE_DOCTORS = [
+  { id: '1', email: 'doctor.john@example.com', password: 'doctorJohn123', name: 'John Carter', hospital: 'Victoria General' },
+  { id: '2', email: 'doctor.emma@example.com', password: 'doctorEmma456', name: 'Emma Clark', hospital: 'Royal Jubilee' },
+  { id: '3', email: 'doctor.william@example.com', password: 'doctorWilliam789', name: 'William Foster', hospital: 'Victoria General' },
+  { id: '4', email: 'doctor.sophia@example.com', password: 'doctorSophia123', name: 'Sophia Bell', hospital: 'Royal Jubilee' },
+  { id: '5', email: 'doctor.jacob@example.com', password: 'doctorJacob456', name: 'Jacob Price', hospital: 'Victoria General' },
+  { id: '6', email: 'doctor.ava@example.com', password: 'doctorAva789', name: 'Ava Perry', hospital: 'Royal Jubilee' },
+  { id: '7', email: 'doctor.mason@example.com', password: 'doctorMason123', name: 'Mason Green', hospital: 'Victoria General' },
+  { id: '8', email: 'doctor.isabella@example.com', password: 'doctorIsabella456', name: 'Isabella Young', hospital: 'Royal Jubilee' },
+  { id: '9', email: 'doctor.elijah@example.com', password: 'doctorElijah789', name: 'Elijah Turner', hospital: 'Victoria General' },
+  { id: '10', email: 'doctor.mia@example.com', password: 'doctorMia123', name: 'Mia Sanders', hospital: 'Royal Jubilee' }
+];
+
+export const SAMPLE_ADMINS = [
+  { id: '1', email: 'admin.jason@example.com', password: 'adminJason123', name: 'Jason Wright' },
+  { id: '2', email: 'admin.amy@example.com', password: 'adminAmy456', name: 'Amy Johnson' },
+  { id: '3', email: 'admin.michael@example.com', password: 'adminMichael789', name: 'Michael Lee' },
+  { id: '4', email: 'admin.susan@example.com', password: 'adminSusan123', name: 'Susan Davis' },
+  { id: '5', email: 'admin.robert@example.com', password: 'adminRobert456', name: 'Robert Brown' }
+];
