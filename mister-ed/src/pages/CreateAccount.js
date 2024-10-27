@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { SAMPLE_PATIENTS } from './sampledb';  // Import your sample data
 
 function CreateAccount() {
   const [newAccount, setNewAccount] = useState({
@@ -20,7 +19,7 @@ function CreateAccount() {
     setNewAccount({ ...newAccount, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Simple validation to ensure fields are filled in
@@ -29,16 +28,25 @@ function CreateAccount() {
       return;
     }
 
-    // Assign a new ID
-    const newId = (SAMPLE_PATIENTS.length + 1).toString();
-    const accountToAdd = { ...newAccount, id: newId };
+    try {
+      const { id, ...accountData } = newAccount; // Exclude 'id' so json-server can auto-generate it for simplicity
+      const response = await fetch('http://localhost:3001/patients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(accountData)
+      });
 
-    // Simulate adding the account to the SAMPLE_PATIENTS array
-    SAMPLE_PATIENTS.push(accountToAdd);
-    console.log('New account added:', accountToAdd);
-
-    // Redirect to login page after account creation
-    navigate('/login');
+      if (response.ok) {
+        console.log('New account added:', newAccount);
+        setError('');
+        navigate('/login'); // Redirect to login page after account creation
+      } else {
+        throw new Error('Failed to create account');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setError('There was a problem creating the account. Please try again.');
+    }
   };
 
   const handleReturnToLanding = () => {
