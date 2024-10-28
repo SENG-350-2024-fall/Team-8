@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import JsonServerClient from './JsonServerClient';
 
 function Login() {
 
@@ -28,12 +29,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/${endpoint}`);
-      if (!response.ok) {
-        throw new Error('Network response was not OK');
-      }
-
-      const data = await response.json();
+      const data = await JsonServerClient.fetch(endpoint);
       const foundUser = data?.find(
         (user) => user.email === email && user.password === password
       );

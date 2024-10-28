@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import JsonServerClient from './JsonServerClient';
 
 function CreateAccount() {
   const [newAccount, setNewAccount] = useState({
@@ -30,11 +31,7 @@ function CreateAccount() {
 
     try {
       const { id, ...accountData } = newAccount; // Exclude 'id' so json-server can auto-generate it for simplicity
-      const response = await fetch('http://localhost:3001/patients', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(accountData)
-      });
+      const response = await JsonServerClient.post('patients', accountData);
 
       if (response.ok) {
         console.log('New account added:', newAccount);
