@@ -11,6 +11,9 @@
 # production
 /build
 
+# logging
+/src/logging/logs
+
 # misc
 .DS_Store
 .env.local
