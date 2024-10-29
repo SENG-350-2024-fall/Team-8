@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import { SAMPLE_PATIENTS, SAMPLE_NURSES, SAMPLE_EMTS, SAMPLE_DOCTORS, SAMPLE_ADMINS } from './sampledb';  // Import your sample data
+import JsonServerClient from './JsonServerClient';
 
 function Login() {
 
@@ -11,33 +11,40 @@ function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate(); // Hook to programmatically navigate
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let sampleData;
+    // Define the endpoint based on the selected account type
+    let endpoint;
     if (accountType === 'Patient') {
-      sampleData = SAMPLE_PATIENTS;
+      endpoint = 'patients';
     } else if (accountType === 'Nurse') {
-      sampleData = SAMPLE_NURSES;
+      endpoint = 'nurses';
     } else if (accountType === 'EMT') {
-      sampleData = SAMPLE_EMTS;
+      endpoint = 'emts';
     } else if (accountType === 'Doctor'){
-      sampleData = SAMPLE_DOCTORS;
+      endpoint = 'doctors';
     } else if (accountType === 'Admin'){
-      sampleData = SAMPLE_ADMINS
+      endpoint = 'admins';
     }
 
-    const foundUser = sampleData?.find(
-      (user) => user.email === email && user.password === password
-    );
+    try {
+      const data = await JsonServerClient.fetch(endpoint);
+      const foundUser = data?.find(
+        (user) => user.email === email && user.password === password
+      );
 
-    if (foundUser) {
-      console.log('Login successful:', foundUser);
-      setError('');
-      navigate('/home'); // Redirect to landing page upon successful login
-    } else {
-      setError('Invalid email or password. Please try again.');
-    }
+      if (foundUser) {
+        console.log('Login successful:', foundUser);
+        setError('');
+        navigate('/home'); // Redirect to landing page upon successful login
+      } else {
+        setError('Invalid email or password. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setError('There was an error processing your request.');
+	}
   };
 
   return (
