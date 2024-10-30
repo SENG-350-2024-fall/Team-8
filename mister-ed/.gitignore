@@ -12,7 +12,7 @@
 /build
 
 # logging
-/src/logging/logs
+logs.json
 
 # misc
 .DS_Store
