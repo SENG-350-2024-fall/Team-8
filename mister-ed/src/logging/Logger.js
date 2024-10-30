@@ -1,87 +1,88 @@
 /*
   Author: Reid Williamson
 
-  This is the logger configuration file. If you want to change general behaviours of the logger, this is where you would do it.
+  This is a logger implementation that interfaces with the console and LoggerClient to create and send logs.
+  You can customize each logger instance to filter out lower levels at construction, or using the setLevel method.
+  
 */
 import LoggerClient from '../clients/LoggerClient';
 
 export default class Logger {
-    static levels = {
-        error: 0,
-        warn: 1,
-        info: 2,
-        debug: 3,
+    #currentLevel;
+    static #levels = {
+        0: 'error',
+        1: 'warn',
+        2: 'info',
+        3: 'debug',
     };
 
+    static #getLevelValue(levelName) {
+        return Object.keys(this.#levels).find(
+            (key) => this.#levels[key] === levelName
+        );
+    }
+
+    static #getLevelName(levelValue) {
+        return Logger.#levels[levelValue];
+    }
+
     constructor(initialLevel = 'info') {
-        this.currentLevel = Logger.levels[initialLevel]; // Default log level
+        this.#currentLevel = Logger.#getLevelValue(initialLevel);
     }
 
-    // Method to set the current logging level
     setLevel(level) {
-        if (Logger.levels[level] !== undefined) {
-            this.currentLevel = Logger.levels[level];
+        if (Logger.#getLevelValue(level) !== undefined) {
+            this.#currentLevel = Logger.#getLevelValue(level);
         } else {
-            console.error(`Invalid log level: ${level}`);
+            throw new Error(`Invalid log level: ${level}`);
         }
     }
 
-    // Method to create a log entry
-    createLog(level, message) {
-        if (Logger.levels[level] <= this.currentLevel) {
-            // Only log if the level is equal or above the current level
-            const timestamp = new Date().toISOString(); // Get the current timestamp
-            const date = new Date().toLocaleDateString(); // Get the current date
+    getLevel() {
+        return Logger.#getLevelName(this.#currentLevel);
+    }
 
-            // Create a log object
-            const logEntry = {
-                level: level,
-                timestamp: timestamp,
-                date: date,
-                message: this.formatMessage(message),
-            };
-
-            this.logToClient(logEntry);
-            this.logToConsole(logEntry);
+    #sendLogEntry(logEntry) {
+        if (Logger.#getLevelValue(logEntry.level) <= this.#currentLevel) {
+            this.#logToClient(logEntry);
+            this.#logToConsole(logEntry);
         }
     }
 
-    formatMessage(message) {
-        if (message instanceof Error) {
-            return JSON.stringify({
-                name: message.name,
-                message: message.message,
-                stack: message.stack,
-            });
-        }
-        return typeof message === 'object' ? JSON.stringify(message) : message; // Convert to JSON string if it's an object
-    }
-
-    logToConsole(logEntry) {
+    #logToConsole(logEntry) {
         console.log(JSON.stringify(logEntry));
     }
 
-    logToClient(logEntry) {
+    #logToClient(logEntry) {
         LoggerClient.post('logs', logEntry);
     }
 
     info(message) {
-        this.createLog('info', message);
+        const log = new LogEntry('info', message);
+        this.#sendLogEntry(log);
     }
 
     warn(message) {
-        this.createLog('warn', message);
+        const log = new LogEntry('warn', message);
+        this.#sendLogEntry(log);
     }
 
-    error(message) {
-        this.createLog('error', message);
+    error(message, error = null) {
+        const log = new LogEntry('error', message, error);
+        this.#sendLogEntry(log);
     }
 
     debug(message) {
-        this.createLog('debug', message);
+        const log = new LogEntry('debug', message);
+        this.#sendLogEntry(log);
     }
+}
 
-    logToConsole(logEntry) {
-        console.log(logEntry);
+class LogEntry {
+    constructor(level, message, err = null) {
+        this.level = level;
+        this.timestamp = new Date().toISOString();
+        this.message = message;
+        if (err !== null) this.error = err;
     }
 }
