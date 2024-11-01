@@ -1,3 +1,10 @@
 {
-    "logs": []
+  "logs": [
+    {
+      "id": "3c57",
+      "level": "info",
+      "timestamp": "2024-11-01T18:56:36.538Z",
+      "message": "User created: {\"permissions\":[\"create_support_ticket\",\"request_triage\",\"view_personal_history\"]}"
+    }
+  ]
 }
