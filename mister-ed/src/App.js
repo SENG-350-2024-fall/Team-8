@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import CreateAccount from './pages/create_account/CreateAccount';
 import HomePage from './pages/HomePage';
 import Triage from './pages/Triage';
+import RequestTriage from './pages/RequestTriage';
 import './App.css';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/home" element={<HomePage />} />
 		  <Route path="/triage" element={<Triage />} />
+		  <Route path="/request-triage" element={<RequestTriage />} />
           <Route path="/" element={<Navigate to="/landing" />} />
         </Routes>
       </div>
