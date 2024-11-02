@@ -8,6 +8,7 @@ function RequestTriage() {
 	const [selectedHospital, setSelectedHospital] = useState('');
 	const [error, setError] = useState('');
   const navigate = useNavigate();
+  const [queuePosition, setQueuePosition] = useState(null);
 
   useEffect(() => {
     const fetchHospitals = async () => {
@@ -23,15 +24,29 @@ function RequestTriage() {
     fetchHospitals();
   }, []);
   
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selectedHospital) {
       setError('Please select a hospital.');
       return;
     }
-    // Add logic to handle triage request submission here
-    console.log('Selected Hospital:', selectedHospital);
+    
+    try {
+			// Fetch hospital data to get queue count
+			const hospitalData = await DatabaseClient.fetch(`hospitals/${selectedHospital}`);
+			const currentQueue = hospitalData.queue;
+			// Update hospital queue count
+			const newQueuePosition = currentQueue + 1;
+			await DatabaseClient.update(`hospitals/${selectedHospital}`, { queue: newQueuePosition });
+			// Display user's position in queue
+			setQueuePosition(newQueuePosition);
+		} catch (error) {
+			console.error('Error updating queue:', error);
+			setError('Could not submit request. Please try again.');
+		}
   };
+  
+  const selectedHospitalDetails = hospitals.find(hospital => hospital.id === selectedHospital);
 
   const handleLogout = () => {
     navigate('/login');
@@ -40,34 +55,41 @@ function RequestTriage() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px' }}>
       <h1>Request Triage</h1>
-      <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto' }}>
-				<FormControl fullWidth margin='normal' variant='outlined'>
-					<InputLabel id='hospital-select-label' shrink>
-						Hospital
-					</InputLabel>
-					<Select
-						labelId='hospital-select-label'
-						value={selectedHospital}
-						onChange={(e) => setSelectedHospital(e.target.value)}
-						fullWidth
+      {queuePosition ? (
+				<p>
+					You are in the queue for <strong>{selectedHospitalDetails?.name}</strong>.
+					Your position in the queue: {queuePosition}
+				</p>
+      ) : (
+				<form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto' }}>
+					<FormControl fullWidth margin='normal' variant='outlined'>
+						<InputLabel id='hospital-select-label' shrink>
+							Hospital
+						</InputLabel>
+						<Select
+							labelId='hospital-select-label'
+							value={selectedHospital}
+							onChange={(e) => setSelectedHospital(e.target.value)}
+							fullWidth
+						>
+							{hospitals.map((hospital) => (
+								<MenuItem key={hospital.id} value={hospital.id}>
+									{hospital.name}
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+					{error && <p style={{ color: 'red' }}>{error}</p>}{' '}
+					<Button
+						type="submit"
+						variant="contained"
+						color="error"
+						style={{ marginTop: '20px', width: '100%' }}
 					>
-						{hospitals.map((hospital) => (
-							<MenuItem key={hospital.id} value={hospital.id}>
-								{hospital.name}
-							</MenuItem>
-						))}
-					</Select>
-				</FormControl>
-				{error && <p style={{ color: 'red' }}>{error}</p>}{' '}
-				<Button
-					type="submit"
-					variant="contained"
-					color="error"
-					style={{ marginTop: '20px', width: '100%' }}
-				>
-					Submit
-				</Button>
-      </form>
+						Submit
+					</Button>
+				</form>
+			)}
       {/* Logout Button */}
       <Box mt={4}>
         <Button 
