@@ -21,7 +21,7 @@ function Triage() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => alert('Request Triage Clicked')}
+            onClick={() => navigate('/request-triage')}
           >
 			Request Triage
           </Button>
