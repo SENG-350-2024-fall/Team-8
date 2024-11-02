@@ -10,6 +10,11 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import DatabaseClient from '../clients/DatabaseClient';
 import Logger from '../logging/Logger';
+import Patient from '../users/Patient';
+import Nurse from '../users/Nurse';
+import EMT from '../users/EMT';
+import Doctor from '../users/Doctor';
+import Admin from '../users/Admin';
 
 const LOG = new Logger();
 
