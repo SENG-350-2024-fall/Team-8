@@ -79,6 +79,22 @@
       "name": "Test User",
       "age": "40",
       "postal": "V0J 0K1"
+    },
+    {
+      "id": "37a2",
+      "email": "Kate.Will@example.com",
+      "password": "KattyWill1234",
+      "name": "Kate William",
+      "age": "24",
+      "postal": "V9A 2L3"
+    },
+    {
+      "id": "47d0",
+      "email": "Rob.reed32@example.com",
+      "password": "123456789",
+      "name": "Robert Reed",
+      "age": "23",
+      "postal": "V2D 4G9"
     }
   ],
   "nurses": [
