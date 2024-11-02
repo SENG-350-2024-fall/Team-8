@@ -339,17 +339,20 @@
     {
       "id": 1,
       "name": "Saanich Peninsula Hospital",
-      "postal": "V8M 2B2"
+      "postal": "V8M 2B2",
+      "queue": 0
     },
     {
       "id": 2,
       "name": "Victoria General Hospital",
-      "postal": "V8Z 6R5"
+      "postal": "V8Z 6R5",
+      "queue": 0
     },
     {
       "id": 3,
       "name": "Royal Jubilee Hospital",
-      "postal": "V8R 1J8"
+      "postal": "V8R 1J8",
+      "queue": 0
     }
   ]
 }
