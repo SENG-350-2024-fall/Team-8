@@ -52,6 +52,42 @@ class DatabaseClient {
             body: JSON.stringify(data),
         });
     }
+
+    // PUT method
+    async put(endpoint, id, data) {
+        try {
+            const response = await fetch(`http://localhost:${this.port}/${endpoint}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                throw new Error(`Network response was not OK: ${response.statusText}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('API put error:', error);
+            throw error;
+        }
+    }
+
+    //PATCH method
+    async patch(endpoint, id, data) {
+        try {
+            const response = await fetch(`http://localhost:${this.port}/${endpoint}/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+            if (!response.ok) {
+                throw new Error(`Network response was not OK: ${response.statusText}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('API patch error:', error);
+            throw error;
+        }
+    } 
 }
 
 export default DatabaseClient.getInstance(3001);

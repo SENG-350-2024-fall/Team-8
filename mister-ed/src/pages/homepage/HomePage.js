@@ -54,7 +54,7 @@ function HomePage() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => alert('Support Clicked')}
+            onClick={() => navigate('/support')} //Navigate to the Support Page
           >
             Support
           </Button>

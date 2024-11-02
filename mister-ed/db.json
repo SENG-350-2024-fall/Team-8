@@ -318,5 +318,67 @@
       "password": "adminRobert456",
       "name": "Robert Brown"
     }
+  ],
+  "support": [
+    {
+      "id": "2e92",
+      "UserID": "1",
+      "Category": "Account Issues",
+      "Message": "Having issues viewing my profile. I only have an alert when clicking the profile button.",
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-11-02T21:44:34.850Z",
+      "LastUpdateTime": "2024-11-02T21:44:34.850Z"
+    },
+    {
+      "id": "ace9",
+      "UserID": "1",
+      "Category": "Location Services",
+      "Message": "I am having issues when trying to select a location after requesting for a triage.",
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-11-02T21:47:25.448Z",
+      "LastUpdateTime": "2024-11-02T21:47:25.448Z"
+    },
+    {
+      "id": "e61c",
+      "UserID": "1",
+      "Category": "Triage Issues",
+      "Message": "Can't fill in anything when clicking the Request Triage Button.",
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-11-02T21:47:53.079Z",
+      "LastUpdateTime": "2024-11-02T21:47:53.079Z"
+    },
+    {
+      "id": "d704",
+      "UserID": "1",
+      "Category": "New Feature Requests",
+      "Message": "Should have a place where I can view Notifications. And maybe a message service where I can interact with admins on my tickets.",
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-11-02T21:48:28.334Z",
+      "LastUpdateTime": "2024-11-02T21:48:28.334Z"
+    },
+    {
+      "id": "e941",
+      "UserID": "1",
+      "Category": "Other",
+      "Message": "Not sure how the online triage thing works. I made a triage request and haven't heard back from the nurse.",
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-11-02T21:49:08.029Z",
+      "LastUpdateTime": "2024-11-02T21:49:08.029Z"
+    },
+    {
+      "id": "859c",
+      "UserID": "1",
+      "Category": "Emergency Dispatch Issues",
+      "Message": "I am unable to complete dispatch requests. I can view dispatch requests but when I complete the task and go online to officially finish the request, I can't change the status. This is a major issue since I cannot filter the dispatch requests based on status, leaving the list of requests unorganized.",
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-11-02T21:50:53.235Z",
+      "LastUpdateTime": "2024-11-02T21:50:53.235Z"
+    }
   ]
 }
