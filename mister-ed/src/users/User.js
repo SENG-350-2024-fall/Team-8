@@ -9,7 +9,6 @@ class User {
     }
 
     //Any Methods that are common amongst all the user types
-
     get name() {
         return this._name;
     }
