@@ -20,6 +20,14 @@ function Login() {
     const [error, setError] = useState('');
     const navigate = useNavigate(); // Hook to programmatically navigate
 
+      const userClasses = {
+        Patient,
+        Nurse,
+        EMT,
+        Doctor,
+        Admin,
+    };
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,6 +52,24 @@ function Login() {
             );
 
             if (foundUser) {
+                const UserClass = userClasses[accountType];
+                const user = new UserClass(
+                    foundUser.name,
+                    foundUser.email,
+                    foundUser.password,
+                    foundUser.age,
+                    foundUser.postal
+                );
+
+            // Store the user object in localStorage
+            localStorage.setItem('user', JSON.stringify({
+                name: user.name,       
+                email: user.email,     
+                age: user.age,         
+                postal: user.postal,   
+                role: user.role        
+            }));
+                
                 LOG.info(data);
                 setError('');
                 navigate('/home'); // Redirect to landing page upon successful login
