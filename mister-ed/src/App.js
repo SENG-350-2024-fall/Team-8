@@ -4,6 +4,7 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import CreateAccount from './pages/create_account/CreateAccount';
 import HomePage from './pages/HomePage';
+import Profile from './pages/Profile';
 import './App.css';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/" element={<Navigate to="/landing" />} />
         </Routes>
       </div>
