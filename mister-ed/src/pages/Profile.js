@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Grid, Box } from '@mui/material'; // Import Button, Grid, and Box from MUI
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import Logger from '../logging/Logger';
+
+const LOG = new Logger();
 
 function Profile() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate(); // Initialize useNavigate hook
 
   useEffect(() => {
-    // Retrieve the user object from localStorage
     const userData = localStorage.getItem('user');
     if (userData) {
-      setUser(JSON.parse(userData));
+      try {
+        setUser(JSON.parse(userData));
+        console.log(JSON.parse(userData));
+      } catch (error) { 
+        LOG.error(`Error parsing user data in Profile Page`, error);
+      }
     }
   }, []);
 
