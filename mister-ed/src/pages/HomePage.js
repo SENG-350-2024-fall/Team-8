@@ -21,9 +21,9 @@ function HomePage() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => alert('Triage Request Clicked')}
+            onClick={() => navigate('/triage')}
           >
-            Triage Request
+            Triage
           </Button>
         </Grid>
         <Grid item xs={6}>
