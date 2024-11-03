@@ -32,7 +32,7 @@ function HomePage() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => alert('Profile Clicked')}
+            onClick={() =>  navigate('/profile')}
           >
             Profile
           </Button>

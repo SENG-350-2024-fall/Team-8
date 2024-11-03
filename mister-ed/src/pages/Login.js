@@ -10,6 +10,8 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import DatabaseClient from '../clients/DatabaseClient';
 import Logger from '../logging/Logger';
+import User from '../users/User';
+import UserFactory from '../users/UserFactory';
 
 const LOG = new Logger();
 
@@ -19,7 +21,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate(); // Hook to programmatically navigate
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -44,6 +46,22 @@ function Login() {
             );
 
             if (foundUser) {
+                // Only reason UserFactory is called instead of just using UserData is so that we also have user permissions
+                // which are only set using UserFactory.
+                const user = UserFactory.createUser(accountType,foundUser.name, foundUser.email, foundUser.password, foundUser.age, foundUser.postal);
+                const userData = {
+                    name: user.name,
+                    email: user.email,
+                    password: user.password,
+                    age: user.age,
+                    postal: user.postal,
+                    permissions: user.permissions,
+                    role: accountType
+                  };
+
+            // Store the user object in localStorage
+            localStorage.setItem('user', JSON.stringify(userData));
+                
                 LOG.info(data);
                 setError('');
                 navigate('/home'); // Redirect to landing page upon successful login
@@ -52,7 +70,7 @@ function Login() {
                 setError('Invalid email or password. Please try again.');
             }
         } catch (error) {
-            LOG.info('failure fetching data');
+            LOG.info('Failure fetching data');
             console.error('Error fetching data:', error);
             setError('There was an error processing your request.');
         }
