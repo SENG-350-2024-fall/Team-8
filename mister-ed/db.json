@@ -337,22 +337,31 @@
   ],
   "hospitals": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Saanich Peninsula Hospital",
       "postal": "V8M 2B2",
-      "queue": 0
+      "queue": 2
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Victoria General Hospital",
       "postal": "V8Z 6R5",
       "queue": 0
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Royal Jubilee Hospital",
       "postal": "V8R 1J8",
       "queue": 0
+    }
+  ],
+  "triage_records": [
+    {
+      "id": "23",
+      "patientID": "1",
+      "nurseID": "",
+      "description": "My arm hurts!",
+      "outcome": "dsadsa"
     }
   ]
 }
