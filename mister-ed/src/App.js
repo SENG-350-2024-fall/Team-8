@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import Triage from './pages/Triage';
 import RequestTriage from './pages/RequestTriage';
 import Profile from './pages/Profile';
+import HomeEMT from './pages/HomeEMT';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 		      <Route path="/triage" element={<Triage />} />
 		      <Route path="/request-triage" element={<RequestTriage />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/homeEMT" element={<HomeEMT />} />
           <Route path="/" element={<Navigate to="/landing" />} />
         </Routes>
       </div>

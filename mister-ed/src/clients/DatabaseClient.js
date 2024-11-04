@@ -61,6 +61,18 @@ class DatabaseClient {
 						body: JSON.stringify(data),
 				});
 		}
+
+    // Toggle EMT availability
+    async toggleAvailability(userId, isAvailable) {
+            return fetch(`http://localhost:${this.port}/emts/${userId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ available: isAvailable }),
+            });
+    }
+
+        
+
 }
 
 export default DatabaseClient.getInstance(3001);

@@ -50,6 +50,7 @@ function Login() {
                 // which are only set using UserFactory.
                 const user = UserFactory.createUser(accountType,foundUser.name, foundUser.email, foundUser.password, foundUser.age, foundUser.postal);
                 const userData = {
+                    id: foundUser.id,
                     name: user.name,
                     email: user.email,
                     password: user.password,
@@ -64,7 +65,13 @@ function Login() {
                 
                 LOG.info(data);
                 setError('');
-                navigate('/home'); // Redirect to landing page upon successful login
+
+                let redirectPath = '/home';
+                if(accountType === 'EMT'){
+                    DatabaseClient.toggleAvailability(foundUser.id, true); // Set available when logged in
+                    redirectPath = '/homeEMT';
+                }
+                navigate(redirectPath); // Redirect to landing page upon successful login
             } else {
                 LOG.info('Failed Login');
                 setError('Invalid email or password. Please try again.');
