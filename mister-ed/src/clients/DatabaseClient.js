@@ -52,15 +52,15 @@ class DatabaseClient {
             body: JSON.stringify(data),
         });
     }
-    
+
     // PATCH method
-		async update(endpoint, data) {
-				return fetch(`http://localhost:${this.port}/${endpoint}`, {
-						method: 'PATCH',
-						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify(data),
-				});
-		}
+    async update(endpoint, data) {
+        return fetch(`http://localhost:${this.port}/${endpoint}/${data.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+    }
 }
 
 export default DatabaseClient.getInstance(3001);
