@@ -88,6 +88,36 @@ class DatabaseClient {
             throw error;
         }
     } 
+
+    // PATCH method for updating the Ticket (Comments)
+    async updateTicket(endpoint, id, data) {
+        try {
+            const updatedTicket = await this.handlePatchTicket(id, data.comment);
+            return updatedTicket; // Return the updated ticket
+        } catch (error) {
+            console.error('API patch error:', error);
+            throw error;
+        }
+    }
+
+    // Method to handle Ticket Comments specifically
+    async handlePatchTicket(id, comment) {
+        // Fetch the ticket from the database
+        const ticket = await this.fetch(`support/${id}`);
+        if (ticket) {
+            // Ensure the Comments field exists
+            if (!ticket.Comments) {
+                ticket.Comments = [];
+            }
+            // Add the new comment
+            ticket.Comments.push(comment);
+            // Update the timestamp
+            ticket.LastUpdateTime = new Date().toISOString(); 
+            // Return the updated ticket
+            return ticket; 
+        }
+        throw new Error('Ticket not found'); // Handle not found case
+    }
 }
 
 export default DatabaseClient.getInstance(3001);

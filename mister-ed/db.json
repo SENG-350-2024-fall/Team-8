@@ -325,10 +325,11 @@
       "UserID": "1",
       "Category": "Account Issues",
       "Message": "Having issues viewing my profile. I only have an alert when clicking the profile button.",
-      "Priority": "Not Set",
-      "Status": "Open",
+      "Priority": "Low",
+      "Status": "Complete",
       "CreateTime": "2024-11-02T21:44:34.850Z",
-      "LastUpdateTime": "2024-11-02T21:44:34.850Z"
+      "LastUpdateTime": "2024-11-02T21:44:34.850Z",
+      "Comments": []
     },
     {
       "id": "ace9",
@@ -338,7 +339,8 @@
       "Priority": "Not Set",
       "Status": "Open",
       "CreateTime": "2024-11-02T21:47:25.448Z",
-      "LastUpdateTime": "2024-11-02T21:47:25.448Z"
+      "LastUpdateTime": "2024-11-02T21:47:25.448Z",
+      "Comments": []
     },
     {
       "id": "e61c",
@@ -348,7 +350,8 @@
       "Priority": "Not Set",
       "Status": "Open",
       "CreateTime": "2024-11-02T21:47:53.079Z",
-      "LastUpdateTime": "2024-11-02T21:47:53.079Z"
+      "LastUpdateTime": "2024-11-02T21:47:53.079Z",
+      "Comments": []
     },
     {
       "id": "d704",
@@ -358,7 +361,8 @@
       "Priority": "Not Set",
       "Status": "Open",
       "CreateTime": "2024-11-02T21:48:28.334Z",
-      "LastUpdateTime": "2024-11-02T21:48:28.334Z"
+      "LastUpdateTime": "2024-11-02T21:48:28.334Z",
+      "Comments": []
     },
     {
       "id": "e941",
@@ -368,7 +372,8 @@
       "Priority": "Not Set",
       "Status": "Open",
       "CreateTime": "2024-11-02T21:49:08.029Z",
-      "LastUpdateTime": "2024-11-02T21:49:08.029Z"
+      "LastUpdateTime": "2024-11-02T21:49:08.029Z",
+      "Comments": []
     },
     {
       "id": "859c",
@@ -378,7 +383,8 @@
       "Priority": "Not Set",
       "Status": "Open",
       "CreateTime": "2024-11-02T21:50:53.235Z",
-      "LastUpdateTime": "2024-11-02T21:50:53.235Z"
+      "LastUpdateTime": "2024-11-02T21:50:53.235Z",
+      "Comments": []
     }
   ]
 }

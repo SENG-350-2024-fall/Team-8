@@ -59,6 +59,17 @@ function HomePage() {
             Support
           </Button>
         </Grid>
+        <Grid item xs={6}>
+          <Button 
+            variant="contained" 
+            color="error" 
+            fullWidth 
+            style={{ padding: '20px' }} 
+            onClick={() => navigate('/support-admin')} //Navigate to the Support Admin Page
+          >
+            Support Admin
+          </Button>
+        </Grid>
       </Grid>
 
       {/* Logout Button */}

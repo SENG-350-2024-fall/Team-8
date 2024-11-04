@@ -53,6 +53,7 @@ function SupportTicketPage() {
             Status: 'Open', // Default status for new tickets
             CreateTime: new Date().toISOString(),
             LastUpdateTime: new Date().toISOString(),
+            Comments: [], //List of potential comments that the admins adds
         };
 
         try {
