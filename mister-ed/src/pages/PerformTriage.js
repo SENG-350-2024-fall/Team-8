@@ -18,6 +18,7 @@ function PerformTriage() {
     // State to manage the display of the form
     const [outcome, setOutcome] = useState('');
     const [triageRecord, setTriageRecord] = useState(null);
+    const [patient, setPatient] = useState(null);
 
     // Function to handle the "Get Next" button click
     const handleGetNext = async () => {
@@ -51,7 +52,17 @@ function PerformTriage() {
             );
             if (record) {
                 setTriageRecord(record);
-                //TODO: get the patient info attached to the record
+
+                LOG.info(
+                    `Attempting to retrieve patient of id: ${record.patientID}`
+                );
+                const patients = await DatabaseClient.fetch('patients');
+                const curPatient = patients?.find(
+                    (patient) => String(patient.id) === String(record.patientID)
+                );
+                if (curPatient) {
+                    setPatient(curPatient);
+                }
             } else {
                 LOG.error(
                     `Trouble accessing triage request from queue with id: ${recordID}`
@@ -76,6 +87,7 @@ function PerformTriage() {
 
         // Reset the state to the default view
         setTriageRecord(null);
+        setPatient(null);
         setOutcome('');
     };
 
@@ -88,18 +100,19 @@ function PerformTriage() {
                     variant='contained'
                     style={{ marginTop: '20px', width: '100%' }}
                 >
-                    Get Next
+                    Get Next Triage Patient
                 </Button>
             ) : (
                 <div>
                     <form>
                         <h3>Details</h3>
                         <p>
-                            <strong>Patient:</strong>
-                            {''}
+                            <strong>Patient: </strong>
+                            {patient ? patient.name : 'Loading...'}
                         </p>
                         <p>
-                            <strong>Message:</strong> {triageRecord.description}
+                            <strong>Message: </strong>{' '}
+                            {triageRecord.description}
                         </p>
                     </form>
                     <TextareaAutosize
