@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Grid, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import DatabaseClient from '../../clients/DatabaseClient';
 
-function HomePage() {
+function HomeEMT() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  
 
-  const handleLogout = () => {
+  useEffect(() => {
+    // Retrieve the current user from localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogout = async () => {
+    if (user) {
+        const response = await DatabaseClient.toggleAvailability(user.id, false); // Set unavailable when logged out
+        console.log('Availability update response:', response);
+    }
+    localStorage.removeItem('user'); // Clear the user from localStorage
     navigate('/login');
-  };
+};
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px' }}>
@@ -21,9 +37,9 @@ function HomePage() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => navigate('/triage')}
+            onClick={() => alert('Dispatch Requests Clicked')}
           >
-            Triage
+            Dispatch Requests
           </Button>
         </Grid>
         <Grid item xs={6}>
@@ -76,5 +92,6 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default HomeEMT;
+
 
