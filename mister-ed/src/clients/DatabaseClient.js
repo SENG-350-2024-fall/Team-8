@@ -52,7 +52,7 @@ class DatabaseClient {
             body: JSON.stringify(data),
         });
     }
-
+    
     // PUT method
     async put(endpoint, id, data) {
         try {
@@ -117,6 +117,24 @@ class DatabaseClient {
             return ticket; 
         }
         throw new Error('Ticket not found'); // Handle not found case
+    }
+    
+    // PATCH method
+    async update(endpoint, data) {
+        return fetch(`http://localhost:${this.port}/${endpoint}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+        });
+    }
+
+    // Toggle EMT availability
+    async toggleAvailability(userId, isAvailable) {
+        return fetch(`http://localhost:${this.port}/emts/${userId}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ available: isAvailable }),
+        });
     }
 }
 

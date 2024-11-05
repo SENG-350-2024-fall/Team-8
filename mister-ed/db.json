@@ -79,6 +79,22 @@
       "name": "Test User",
       "age": "40",
       "postal": "V0J 0K1"
+    },
+    {
+      "id": "37a2",
+      "email": "Kate.Will@example.com",
+      "password": "KattyWill1234",
+      "name": "Kate William",
+      "age": "24",
+      "postal": "V9A 2L3"
+    },
+    {
+      "id": "47d0",
+      "email": "Rob.reed32@example.com",
+      "password": "123456789",
+      "name": "Robert Reed",
+      "age": "23",
+      "postal": "V2D 4G9"
     }
   ],
   "nurses": [
@@ -158,61 +174,71 @@
       "id": "1",
       "email": "jack.taylor@example.com",
       "password": "jackSecure123",
-      "name": "Jack Taylor"
+      "name": "Jack Taylor",
+      "available": false
     },
     {
       "id": "2",
       "email": "sarah.lee@example.com",
       "password": "sarahPass456",
-      "name": "Sarah Lee"
+      "name": "Sarah Lee",
+      "available": false
     },
     {
       "id": "3",
       "email": "michael.brown@example.com",
       "password": "michaelSafe789",
-      "name": "Michael Brown"
+      "name": "Michael Brown",
+      "available": false
     },
     {
       "id": "4",
       "email": "linda.green@example.com",
       "password": "lindaPass123",
-      "name": "Linda Green"
+      "name": "Linda Green",
+      "available": false
     },
     {
       "id": "5",
       "email": "david.king@example.com",
       "password": "davidSecure456",
-      "name": "David King"
+      "name": "David King",
+      "available": false
     },
     {
       "id": "6",
       "email": "amy.jones@example.com",
       "password": "amyPass789",
-      "name": "Amy Jones"
+      "name": "Amy Jones",
+      "available": false
     },
     {
       "id": "7",
       "email": "peter.white@example.com",
       "password": "peterSecure123",
-      "name": "Peter White"
+      "name": "Peter White",
+      "available": false
     },
     {
       "id": "8",
       "email": "rachel.adams@example.com",
       "password": "rachelPass456",
-      "name": "Rachel Adams"
+      "name": "Rachel Adams",
+      "available": false
     },
     {
       "id": "9",
       "email": "chris.evans@example.com",
       "password": "chrisSafe789",
-      "name": "Chris Evans"
+      "name": "Chris Evans",
+      "available": false
     },
     {
       "id": "10",
       "email": "natalie.moore@example.com",
       "password": "nataliePass123",
-      "name": "Natalie Moore"
+      "name": "Natalie Moore",
+      "available": false
     }
   ],
   "doctors": [
@@ -385,6 +411,26 @@
       "CreateTime": "2024-11-02T21:50:53.235Z",
       "LastUpdateTime": "2024-11-02T21:50:53.235Z",
       "Comments": []
+    }
+  ],
+  "hospitals": [
+    {
+      "id": "1",
+      "name": "Saanich Peninsula Hospital",
+      "postal": "V8M 2B2",
+      "queue": 0
+    },
+    {
+      "id": "2",
+      "name": "Victoria General Hospital",
+      "postal": "V8Z 6R5",
+      "queue": 0
+    },
+    {
+      "id": "3",
+      "name": "Royal Jubilee Hospital",
+      "postal": "V8R 1J8",
+      "queue": 0
     }
   ]
 }
