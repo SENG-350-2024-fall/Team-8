@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import DatabaseClient from '../clients/DatabaseClient';
+import DatabaseClient from '../../../clients/DatabaseClient';
 
 function RequestTriage() {
 	const [hospitals, setHospitals] = useState([]);
