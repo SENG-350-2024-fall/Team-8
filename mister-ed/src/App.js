@@ -2,16 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
-import CreateAccount from './pages/CreateAccount';
 import HomePage from './pages/homepage/HomePage';
 import SupportPage from './pages/homepage/support/Support';
 import SupportAdminPage from './pages/homepage/support/SupportAdmin';
 import TicketDetailPage from './pages/homepage/support/TicketDetails';
 import CreateAccount from './pages/create_account/CreateAccount';
-import Triage from './pages/Triage';
-import RequestTriage from './pages/RequestTriage';
-import Profile from './pages/Profile';
-import HomeEMT from './pages/HomeEMT';
+import Triage from './pages/homepage/triage/Triage';
+import RequestTriage from './pages/homepage/triage/RequestTriage';
+import Profile from './pages/homepage/profile/Profile';
+import HomeEMT from './pages/homepage/HomeEMT';
 import './App.css';
 
 function App() {

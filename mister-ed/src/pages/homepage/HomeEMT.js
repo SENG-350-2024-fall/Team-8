@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Grid, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import DatabaseClient from '../clients/DatabaseClient';
+import DatabaseClient from '../../clients/DatabaseClient';
 
 function HomeEMT() {
   const navigate = useNavigate();
