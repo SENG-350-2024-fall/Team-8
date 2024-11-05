@@ -432,5 +432,14 @@
       "postal": "V8R 1J8",
       "queue": 0
     }
+  ],
+  "triage_records": [
+    {
+      "id": "23",
+      "patientID": "1",
+      "nurseID": "",
+      "description": "My arm hurts!",
+      "outcome": ""
+    }
   ]
 }

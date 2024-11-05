@@ -52,6 +52,16 @@ class DatabaseClient {
             body: JSON.stringify(data),
         });
     }
+
+    // PATCH method
+    async updateRecord(endpoint, data) {
+        return fetch(`http://localhost:${this.port}/${endpoint}/${data.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+    }
+
     
     // PUT method
     async put(endpoint, id, data) {

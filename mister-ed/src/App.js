@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    Navigate,
+} from 'react-router-dom';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import HomePage from './pages/homepage/HomePage';
@@ -7,6 +12,7 @@ import SupportPage from './pages/homepage/support/Support';
 import SupportAdminPage from './pages/homepage/support/SupportAdmin';
 import TicketDetailPage from './pages/homepage/support/TicketDetails';
 import CreateAccount from './pages/create_account/CreateAccount';
+import PerformTriage from './pages/homepage/triage/PerformTriage';
 import Triage from './pages/homepage/triage/Triage';
 import RequestTriage from './pages/homepage/triage/RequestTriage';
 import Profile from './pages/homepage/profile/Profile';
@@ -27,6 +33,7 @@ function App() {
           <Route path="/ticket-details/:id" element={<TicketDetailPage />} />
 		      <Route path="/triage" element={<Triage />} />
 		      <Route path="/request-triage" element={<RequestTriage />} />
+          <Route path='/perform-triage' element={<PerformTriage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/homeEMT" element={<HomeEMT />} />
           <Route path="/" element={<Navigate to="/landing" />} />
@@ -37,5 +44,3 @@ function App() {
 }
 
 export default App;
-
-
