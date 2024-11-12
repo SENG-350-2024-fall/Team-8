@@ -16,6 +16,17 @@ function Triage() {
       {/* Grid of buttons */}
       <Grid container spacing={2} justifyContent="center" style={{ maxWidth: '600px' }}>
         <Grid item xs={6}>
+          <Button
+            variant="contained"
+            color="error"
+            fullWidth
+            style={{ padding: '20px' }}
+            onClick={() => navigate('/home')}
+          >
+            Home Page
+          </Button>
+        </Grid>
+        <Grid item xs={6}>
           <Button 
             variant="contained" 
             color="error" 
@@ -28,17 +39,6 @@ function Triage() {
         </Grid>
       </Grid>
 
-      {/* Logout Button */}
-      <Box mt={4}>
-        <Button 
-          variant="contained" 
-          color="secondary" 
-          onClick={handleLogout} 
-          style={{ padding: '10px 40px' }}
-        >
-          Logout
-        </Button>
-      </Box>
     </div>
   );
 }
