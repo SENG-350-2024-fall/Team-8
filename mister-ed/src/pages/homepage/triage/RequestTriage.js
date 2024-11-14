@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Button, FormControl, InputLabel, Select, MenuItem, Box, TextField, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import DatabaseClient from '../../../clients/DatabaseClient';
+import Logger from '../../../logging/Logger';
+
+const logger = new Logger();
 
 function RequestTriage() {
 	const [hospitals, setHospitals] = useState([]);
@@ -10,6 +13,19 @@ function RequestTriage() {
   const navigate = useNavigate();
   const [queuePosition, setQueuePosition] = useState(null);
   const [triageRequestDescription, setTriageRequestDescription] = useState();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Load user data from localStorage
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      try {
+        setUser(JSON.parse(userData));
+      } catch (error) {
+        logger.error(`Error parsing user data in Request Triage Page`, error);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const fetchHospitals = async () => {
@@ -49,6 +65,29 @@ function RequestTriage() {
 			console.error('Error updating queue:', error);
 			setError('Could not submit request. Please try again.');
 		}
+  
+    try {
+      const recordData = {
+        lastModified: new Date().toISOString(), // ISO format for the date
+        patientID: user?.id || '', // Use user.id if available
+        nurseID: '', // Initially empty
+        description: triageRequestDescription,
+        outcome: '', // Initially empty
+      };
+      
+      const response = await DatabaseClient.post('triage_records', recordData);
+      if (response.ok) {
+        logger.info(`Record created: ${JSON.stringify(recordData)}`);
+        setError('');
+      } else {
+        throw new Error('Failed to create record');
+      }
+    
+    } catch (error) {
+      setError('Could not submit request. Please try again.');
+      logger.error('Record creation failed', error);
+    }
+    
   };
   
   const selectedHospitalDetails = hospitals.find(hospital => hospital.id === selectedHospital);
