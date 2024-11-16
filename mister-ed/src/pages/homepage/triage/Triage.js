@@ -11,6 +11,7 @@ function Triage() {
   const [triageRecords, setTriageRecords] = useState([]);
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [nurseName, setNurseName] = useState(null);
+  const [hospitalName, setHospitalName] = useState(null);
   const navigate = useNavigate();
   const [showInitialMessage, setShowInitialMessage] = useState(true);
 
@@ -58,9 +59,26 @@ function Triage() {
     }
   };
   
+  const getHospitalName = async (hospitalID) => {
+    if (!hospitalID) {
+      setHospitalName("Unknown");
+      return;
+    }
+    try {
+      const data = await DatabaseClient.fetch('hospitals');
+      const foundHospital = data?.find((hospital) => hospital.id === hospitalID);
+      setHospitalName(foundHospital ? foundHospital.name : "Unknown");
+    } catch (error) {
+      logger.info('Failure fetching data');
+      console.error('Error fetching data:', error);
+      setHospitalName("Unknown");
+    }
+  };
+  
   useEffect(() => {
     if (selectedRecord) {
       getNurseName(selectedRecord.nurseID);
+      getHospitalName(selectedRecord.hospitalID);
     }
   }, [selectedRecord]); // Trigger when selectedRecord changes
   
@@ -155,6 +173,7 @@ function Triage() {
             {selectedRecord && (
               <div style={{ marginTop: '50px', textAlign: 'left' }}>
                 <div><strong>Date:</strong> {formatDate(selectedRecord.lastModified)}</div>
+                <div><strong>Hospital:</strong> {hospitalName}</div>
                 <div><strong>Description:</strong> {selectedRecord.description}</div>
                 <div><strong>Outcome:</strong> {selectedRecord.outcome}</div>
                 <div><strong>Nurse:</strong> {nurseName}</div>
