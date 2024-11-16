@@ -440,7 +440,8 @@
       "patientID": "1",
       "nurseID": "",
       "description": "My arm hurts!",
-      "outcome": ""
+      "outcome": "",
+      "hospitalID": "1"
     }
   ]
 }
