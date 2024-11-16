@@ -73,6 +73,7 @@ function RequestTriage() {
         nurseID: '', // Initially empty
         description: triageRequestDescription,
         outcome: '', // Initially empty
+        hospitalID: selectedHospital,
       };
       
       const response = await DatabaseClient.post('triage_records', recordData);
