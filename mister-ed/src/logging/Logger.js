@@ -83,6 +83,6 @@ class LogEntry {
         this.level = level;
         this.timestamp = new Date().toISOString();
         this.message = message;
-        if (err !== null) this.error = err;
+        if (err !== null) this.error = err.message;
     }
 }
