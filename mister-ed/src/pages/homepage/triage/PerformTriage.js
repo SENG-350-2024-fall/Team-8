@@ -26,8 +26,6 @@ function PerformTriage() {
         try {
             let recordID;
 
-            TriageQueueClient.push(23); //remove this once the queue is implemented in the patient side.
-
             try {
                 recordID = await TriageQueueClient.pop();
             } catch (err) {

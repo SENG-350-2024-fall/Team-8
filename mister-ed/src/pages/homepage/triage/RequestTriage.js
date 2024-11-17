@@ -3,6 +3,7 @@ import { Button, FormControl, InputLabel, Select, MenuItem, Box, TextField, Grid
 import { useNavigate } from 'react-router-dom';
 import DatabaseClient from '../../../clients/DatabaseClient';
 import Logger from '../../../logging/Logger';
+import TriageQueueClient from '../../../clients/TriageQueueClient';
 
 const logger = new Logger();
 
@@ -78,6 +79,8 @@ function RequestTriage() {
       
       const response = await DatabaseClient.post('triage_records', recordData);
       if (response.ok) {
+        const createdRecord = await response.json();
+        TriageQueueClient.push(createdRecord.id); // Push the ID to the queue
         logger.info(`Record created: ${JSON.stringify(recordData)}`);
         setError('');
       } else {
