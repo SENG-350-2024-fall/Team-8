@@ -347,69 +347,81 @@
   ],
   "support": [
     {
-      "id": "2e92",
-      "UserID": "1",
+      "id": "ead6",
       "Category": "Account Issues",
-      "Message": "Having issues viewing my profile. I only have an alert when clicking the profile button.",
-      "Priority": "Low",
-      "Status": "Complete",
-      "CreateTime": "2024-11-02T21:44:34.850Z",
-      "LastUpdateTime": "2024-11-02T21:44:34.850Z",
-      "Comments": []
-    },
-    {
-      "id": "ace9",
-      "UserID": "1",
-      "Category": "Location Services",
-      "Message": "I am having issues when trying to select a location after requesting for a triage.",
-      "Priority": "Not Set",
+      "Message": "There is an issue when viewing my profile.",
+      "User": {
+        "id": "2",
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "role": "Patient"
+      },
+      "Priority": "Medium",
       "Status": "Open",
-      "CreateTime": "2024-11-02T21:47:25.448Z",
-      "LastUpdateTime": "2024-11-02T21:47:25.448Z",
-      "Comments": []
+      "CreateTime": "2024-11-18T04:54:29.186Z",
+      "LastUpdateTime": "2024-11-18T07:28:02.610Z",
+      "Comments": [
+        {
+          "text": "Writing a comment",
+          "timestamp": "2024-11-18T07:22:30.217Z"
+        },
+        {
+          "text": "Some comment",
+          "timestamp": "2024-11-18T07:23:59.310Z"
+        }
+      ]
     },
     {
-      "id": "e61c",
-      "UserID": "1",
+      "id": "f0f2",
       "Category": "Triage Issues",
-      "Message": "Can't fill in anything when clicking the Request Triage Button.",
+      "Message": "My triage is not starting. No matter how long I wait in the queue, I am not making any progress.",
+      "User": {
+        "id": "2",
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "role": "Patient"
+      },
       "Priority": "Not Set",
       "Status": "Open",
-      "CreateTime": "2024-11-02T21:47:53.079Z",
-      "LastUpdateTime": "2024-11-02T21:47:53.079Z",
+      "CreateTime": "2024-11-18T04:55:21.382Z",
+      "LastUpdateTime": "2024-11-18T04:55:21.382Z",
       "Comments": []
     },
     {
-      "id": "d704",
-      "UserID": "1",
-      "Category": "New Feature Requests",
-      "Message": "Should have a place where I can view Notifications. And maybe a message service where I can interact with admins on my tickets.",
+      "id": "7eba",
+      "Category": "Booking Appointments",
+      "Message": "I cannot book appointment for patients. For some reason, it is not getting saved and does not show in the schedule.",
+      "User": {
+        "id": "4",
+        "name": "Olivia Harris",
+        "email": "nurse.olivia@example.com",
+        "role": "Nurse"
+      },
       "Priority": "Not Set",
-      "Status": "Open",
-      "CreateTime": "2024-11-02T21:48:28.334Z",
-      "LastUpdateTime": "2024-11-02T21:48:28.334Z",
-      "Comments": []
+      "Status": "Complete",
+      "CreateTime": "2024-11-18T04:57:19.321Z",
+      "LastUpdateTime": "2024-11-18T07:30:04.778Z",
+      "Comments": [
+        {
+          "text": "This ticket is complete",
+          "timestamp": "2024-11-18T07:30:04.778Z"
+        }
+      ]
     },
     {
-      "id": "e941",
-      "UserID": "1",
-      "Category": "Other",
-      "Message": "Not sure how the online triage thing works. I made a triage request and haven't heard back from the nurse.",
+      "id": "74cc",
+      "Category": "System Feedback",
+      "Message": "The schedule is very hard to read. It is hard to decipher who the patient is and what time the appointment is. Just is not a user friendly schedule.",
+      "User": {
+        "id": "8",
+        "name": "Isabella Young",
+        "email": "doctor.isabella@example.com",
+        "role": "Doctor"
+      },
       "Priority": "Not Set",
       "Status": "Open",
-      "CreateTime": "2024-11-02T21:49:08.029Z",
-      "LastUpdateTime": "2024-11-02T21:49:08.029Z",
-      "Comments": []
-    },
-    {
-      "id": "859c",
-      "UserID": "1",
-      "Category": "Emergency Dispatch Issues",
-      "Message": "I am unable to complete dispatch requests. I can view dispatch requests but when I complete the task and go online to officially finish the request, I can't change the status. This is a major issue since I cannot filter the dispatch requests based on status, leaving the list of requests unorganized.",
-      "Priority": "Not Set",
-      "Status": "Open",
-      "CreateTime": "2024-11-02T21:50:53.235Z",
-      "LastUpdateTime": "2024-11-02T21:50:53.235Z",
+      "CreateTime": "2024-11-18T05:00:22.163Z",
+      "LastUpdateTime": "2024-11-18T05:00:22.163Z",
       "Comments": []
     }
   ],
