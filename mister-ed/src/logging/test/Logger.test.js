@@ -47,7 +47,7 @@ describe('General Logging Methods', () => {
             level: 'error',
             message: 'Door Stuck!',
             timestamp: expect.any(String),
-            error: expect.any(Error),
+            error: expect.stringContaining('Error!'), // Ensure the `error` field contains the error message
         };
 
         expect(console.log).toHaveBeenCalledTimes(1);
