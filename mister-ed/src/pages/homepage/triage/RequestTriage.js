@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
+import { Button, FormControl, InputLabel, Select, MenuItem, Box, TextField, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import DatabaseClient from '../../../clients/DatabaseClient';
+import Logger from '../../../logging/Logger';
+
+const logger = new Logger();
 
 function RequestTriage() {
 	const [hospitals, setHospitals] = useState([]);
@@ -9,6 +12,20 @@ function RequestTriage() {
 	const [error, setError] = useState('');
   const navigate = useNavigate();
   const [queuePosition, setQueuePosition] = useState(null);
+  const [triageRequestDescription, setTriageRequestDescription] = useState();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Load user data from localStorage
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      try {
+        setUser(JSON.parse(userData));
+      } catch (error) {
+        logger.error(`Error parsing user data in Request Triage Page`, error);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const fetchHospitals = async () => {
@@ -30,6 +47,10 @@ function RequestTriage() {
       setError('Please select a hospital.');
       return;
     }
+    if (!triageRequestDescription) {
+      setError('Please provide a reason.');
+      return;
+    }
     
     try {
 			// Fetch hospital data to get queue count
@@ -44,63 +65,114 @@ function RequestTriage() {
 			console.error('Error updating queue:', error);
 			setError('Could not submit request. Please try again.');
 		}
+  
+    try {
+      const recordData = {
+        lastModified: new Date().toISOString(), // ISO format for the date
+        patientID: user?.id || '', // Use user.id if available
+        nurseID: '', // Initially empty
+        description: triageRequestDescription,
+        outcome: '', // Initially empty
+      };
+      
+      const response = await DatabaseClient.post('triage_records', recordData);
+      if (response.ok) {
+        logger.info(`Record created: ${JSON.stringify(recordData)}`);
+        setError('');
+      } else {
+        throw new Error('Failed to create record');
+      }
+    
+    } catch (error) {
+      setError('Could not submit request. Please try again.');
+      logger.error('Record creation failed', error);
+    }
+    
   };
   
   const selectedHospitalDetails = hospitals.find(hospital => hospital.id === selectedHospital);
 
-  const handleLogout = () => {
-    navigate('/login');
-  };
-
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px' }}>
-      <h1>Request Triage</h1>
-      {queuePosition ? (
-				<p>
-					You are in the queue for <strong>{selectedHospitalDetails?.name}</strong>.
-					Your position in the queue: {queuePosition}
-				</p>
-      ) : (
-				<form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto' }}>
-					<FormControl fullWidth margin='normal' variant='outlined'>
-						<InputLabel id='hospital-select-label' shrink>
-							Hospital
-						</InputLabel>
-						<Select
-							labelId='hospital-select-label'
-							value={selectedHospital}
-							onChange={(e) => setSelectedHospital(e.target.value)}
-							fullWidth
-						>
-							{hospitals.map((hospital) => (
-								<MenuItem key={hospital.id} value={hospital.id}>
-									{hospital.name}
-								</MenuItem>
-							))}
-						</Select>
-					</FormControl>
-					{error && <p style={{ color: 'red' }}>{error}</p>}{' '}
-					<Button
-						type="submit"
-						variant="contained"
-						color="error"
-						style={{ marginTop: '20px', width: '100%' }}
-					>
-						Submit
-					</Button>
-				</form>
-			)}
-      {/* Logout Button */}
-      <Box mt={4}>
-        <Button 
-          variant="contained" 
-          color="secondary" 
-          onClick={handleLogout} 
-          style={{ padding: '10px 40px' }}
-        >
-          Logout
-        </Button>
-      </Box>
+    <div>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px' }}>
+        <h1>Request Triage</h1>
+        {/* Grid of buttons */}
+        <Grid container spacing={2} justifyContent="center" style={{ maxWidth: '600px' }}>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="error"
+              fullWidth
+              style={{ padding: '20px' }}
+              onClick={() => navigate('/home')}
+            >
+              Home Page
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="error"
+              fullWidth
+              style={{ padding: '20px' }}
+              onClick={() => navigate('/triage')}
+            >
+              Triage
+            </Button>
+          </Grid>
+        </Grid>
+      </div>
+      {/* Main content */}
+      <div style={{ maxWidth: '400px', margin: '0 auto', textAlign: 'center', marginTop: '50px' }}>
+        {queuePosition ? (
+          <p>
+            You are in the queue for <strong>{selectedHospitalDetails?.name}</strong>.
+            Your position in the queue: {queuePosition}
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <FormControl fullWidth margin='normal'>
+              {/* Hospital select dropdown */}
+              <InputLabel id='hospital-select-label'>
+                Hospital
+              </InputLabel>
+              <Select
+                labelId='hospital-select-label'
+                value={selectedHospital}
+                onChange={(e) => setSelectedHospital(e.target.value)}
+                fullWidth
+              >
+                {hospitals.map((hospital) => (
+                  <MenuItem key={hospital.id} value={hospital.id}>
+                    {hospital.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            {/* Reason text box */}
+            <TextField
+              label="Reason"
+              fullWidth
+              multiline
+              rows={4}
+              margin='normal'
+              value={triageRequestDescription}
+              onChange={(e) => setTriageRequestDescription(e.target.value)}
+            />
+            {/* Submit button */}
+            <Button
+              type="submit"
+              variant="contained"
+              color="error"
+              style={{ marginTop: '20px', width: '100%' }}
+              fullWidth
+            >
+              Submit Request
+            </Button>
+            {error && <p style={{ color: 'red' }}>{error}</p>}{' '}
+          </form>
+        )}
+      </div>
     </div>
   );
 }
