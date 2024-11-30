@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, TextField, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import DatabaseClient from '../../../clients/DatabaseClient';
+import Logger from '../../../logging/Logger';
+
+const LOG = new Logger();
 
 function SupportTicketPage() {
+    const [user, setUser] = useState(null);
     const [ticketData, setTicketData] = useState({
         category: '',
         message: '',
     });
     const [error, setError] = useState('');
     const navigate = useNavigate();
+
+    //Grab User information (to store in ticket)
+    useEffect(() => {
+        const userData = localStorage.getItem('user');
+        if (userData) {
+          try {
+            setUser(JSON.parse(userData));
+            console.log(JSON.parse(userData));
+          } catch (error) { 
+            LOG.error(`Error parsing user data in Profile Page`, error);
+          }
+        }
+      }, []);
 
     const categories = [
         'Account Issues',
@@ -44,9 +61,9 @@ function SupportTicketPage() {
         // Setting additional fields
         const ticketSubmission = {
             // Use user-provided data
-            UserID: '1', // Replace with actual user ID from system
             Category: ticketData.category,
             Message: ticketData.message,
+            User: { id: user.id, name: user.name, email: user.email, role: user.role },
             
             // Auto-generated fields
             Priority: 'Not Set', // Default priority

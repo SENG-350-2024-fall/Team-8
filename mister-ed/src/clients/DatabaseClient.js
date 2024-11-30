@@ -112,7 +112,6 @@ class DatabaseClient {
 
     // Method to handle Ticket Comments specifically
     async handlePatchTicket(id, comment) {
-        // Fetch the ticket from the database
         const ticket = await this.fetch(`support/${id}`);
         if (ticket) {
             // Ensure the Comments field exists
@@ -120,13 +119,13 @@ class DatabaseClient {
                 ticket.Comments = [];
             }
             // Add the new comment
-            ticket.Comments.push(comment);
-            // Update the timestamp
-            ticket.LastUpdateTime = new Date().toISOString(); 
-            // Return the updated ticket
-            return ticket; 
+            ticket.Comments.push({ text: comment, timestamp: new Date().toISOString() });
+            
+            // Update the ticket on the server
+            const response = await this.patch('support', id, { Comments: ticket.Comments, LastUpdateTime: new Date().toISOString() });
+            return response;
         }
-        throw new Error('Ticket not found'); // Handle not found case
+        throw new Error('Ticket not found');
     }
     
     // PATCH method
