@@ -430,7 +430,7 @@
       "id": "1",
       "name": "Saanich Peninsula Hospital",
       "postal": "V8M 2B2",
-      "queue": 0
+      "queue": 1
     },
     {
       "id": "2",
@@ -453,6 +453,37 @@
       "nurseID": "",
       "description": "My arm hurts!",
       "outcome": ""
+    },
+    {
+      "id": "0620",
+      "lastModified": "2024-12-01T02:48:39.513Z",
+      "patientID": "1",
+      "nurseID": "",
+      "description": "I'm gay",
+      "outcome": ""
+    }
+  ],
+  "appointments": [
+    {
+      "id": "a07c",
+      "patientID": "4",
+      "doctorID": "2",
+      "time": "2024-11-05T12:27:00",
+      "notes": "TEst!sd"
+    },
+    {
+      "id": "3f2f",
+      "patientID": "3",
+      "doctorID": "2",
+      "time": "2024-11-13T13:47:00",
+      "notes": "daa"
+    },
+    {
+      "id": "5f85",
+      "patientID": "2",
+      "doctorID": "2",
+      "time": "2024-11-07T12:48:00",
+      "notes": "dsadsad"
     }
   ]
 }
