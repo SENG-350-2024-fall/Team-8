@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import DatabaseClient from '../../../clients/DatabaseClient';
 import TriageQueueClient from '../../../clients/TriageQueueClient';
 import Logger from '../../../logging/Logger';
+import useNextPatient from '../../../hooks/useNextPatient';
 
 const LOG = new Logger();
 
@@ -19,56 +20,57 @@ function PerformTriage() {
     const [outcome, setOutcome] = useState('');
     const [triageRecord, setTriageRecord] = useState(null);
     const [patient, setPatient] = useState(null);
+    const [error, setError] = useState(null);
+    const { getNextPatient, isReady } = useNextPatient(); // Access queueClient readiness (it takes time to load nurse's ID and find the corresponding hospital queue)
+    const [user, setUser] = useState(null);
+
+    // Load user data from localStorage
+    useEffect(() => {
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        try {
+          setUser(JSON.parse(userData));
+        } catch (error) {
+          LOG.error(`Error parsing user data in Request Triage Page`, error);
+        }
+      }
+    }, []);
 
     // Function to handle the "Get Next" button click
     const handleGetNext = async () => {
-        //get next form ID from queue
+        // Clear any previous errors
+        setError('');
+        // Wait until nurse's ID is retrieved and corresponding hospital queue is found
+        if (!isReady) {
+            console.warn('Queue client is not ready yet. Please wait.');
+            return;
+        }
         try {
-            let recordID;
-
-            try {
-                recordID = await TriageQueueClient.pop();
-            } catch (err) {
-                //output an error message onto the page
-                LOG.error('Error popping from triage queue', err);
-                return;
-            }
-
-            //if queue is empty...
-            if (recordID == undefined) {
-                //display a queue is empty message onto the page and exit
-                return;
-            }
-
-            LOG.info(`Attempting to retrieve triage record of id: ${recordID}`);
-
+            // Get next triage record ID from the queue
+            const recordID = await getNextPatient();
+            // Find the triage record that matches this ID
             const records = await DatabaseClient.fetch('triage_records');
-
-            //if the id was retrieved from the database, setShowForm to true
-            const record = records?.find(
-                (record) => record.id === recordID.toString()
+            const foundRecord = records?.find(
+                (record) => String(record.id) === String(recordID)
             );
-            if (record) {
-                setTriageRecord(record);
-
-                LOG.info(
-                    `Attempting to retrieve patient of id: ${record.patientID}`
-                );
-                const patients = await DatabaseClient.fetch('patients');
-                const curPatient = patients?.find(
-                    (patient) => String(patient.id) === String(record.patientID)
-                );
-                if (curPatient) {
-                    setPatient(curPatient);
-                }
-            } else {
-                LOG.error(
-                    `Trouble accessing triage request from queue with id: ${recordID}`
-                );
-            }
+            if (foundRecord) setTriageRecord(foundRecord);
+            // Find the patient of this triage record
+            LOG.info(`Attempting to retrieve patient of id: ${foundRecord.patientID}`);
+            const patients = await DatabaseClient.fetch('patients');
+            const foundPatient = patients?.find(
+                (patient) => String(patient.id) === String(foundRecord.patientID)
+            );
+            if (foundPatient) setPatient(foundPatient);
         } catch (err) {
-            LOG.error('Something went wrong!', err);
-            console.error(err);
+            // Handle errors differently as needed (for debugging and displaying specific error messages to user)
+            if (err.message.includes('Queue is empty')) {
+              setError('Queue is empty.');
+              LOG.error('Queue is empty', err);
+            } else {
+              console.error(err);
+              setError('Could not fetch the next patient.');
+              LOG.error('Could not fetch the next patient', err);
+            }
         }
     };
 
@@ -78,7 +80,8 @@ function PerformTriage() {
         const record = triageRecord;
         record.outcome = outcome;
 
-        //TODO: add nurse ID to the record as well
+        // Add the nurseID to the triage record
+        record.nurseID = user.id;
 
         //update it in the database
         await DatabaseClient.updateRecord('triage_records', record);
@@ -151,6 +154,7 @@ function PerformTriage() {
                     </div>
                 </div>
             )}
+            {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
     );
 }
