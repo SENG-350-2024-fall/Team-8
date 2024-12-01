@@ -120,6 +120,17 @@ function Triage() {
               color="error"
               fullWidth
               style={{ padding: '20px' }}
+              onClick={() => navigate('/perform-triage')}
+            >
+              Perform Triage
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="error"
+              fullWidth
+              style={{ padding: '20px' }}
               onClick={() => navigate('/request-triage')}
             >
               Request Triage
