@@ -49,6 +49,10 @@ function Login() {
                 // Only reason UserFactory is called instead of just using UserData is so that we also have user permissions
                 // which are only set using UserFactory.
                 const user = UserFactory.createUser(accountType,foundUser.name, foundUser.email, foundUser.password, foundUser.age, foundUser.postal);
+                
+                // Add hospitalID only for nurses and doctors
+                const hospitalID = (accountType === 'Nurse' || accountType === 'Doctor') ? foundUser.hospitalID : undefined;
+                
                 const userData = {
                     id: foundUser.id,
                     name: user.name,
@@ -57,7 +61,8 @@ function Login() {
                     age: user.age,
                     postal: user.postal,
                     permissions: user.permissions,
-                    role: accountType
+                    role: accountType,
+                    ...(hospitalID && { hospitalID }) // Add hospitalID only if it's defined
                   };
 
             // Store the user object in localStorage

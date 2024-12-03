@@ -103,70 +103,70 @@
       "email": "nurse.alex@example.com",
       "password": "nurseAlex123",
       "name": "Alex Thompson",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "2",
       "email": "nurse.lucy@example.com",
       "password": "nurseLucy456",
       "name": "Lucy Evans",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "3"
     },
     {
       "id": "3",
       "email": "nurse.james@example.com",
       "password": "nurseJames789",
       "name": "James White",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "4",
       "email": "nurse.olivia@example.com",
       "password": "nurseOlivia123",
       "name": "Olivia Harris",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "3"
     },
     {
       "id": "5",
       "email": "nurse.michael@example.com",
       "password": "nurseMichael456",
       "name": "Michael Clark",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "6",
       "email": "nurse.chloe@example.com",
       "password": "nurseChloe789",
       "name": "Chloe Lewis",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "3"
     },
     {
       "id": "7",
       "email": "nurse.david@example.com",
       "password": "nurseDavid123",
       "name": "David Robinson",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "8",
       "email": "nurse.sarah@example.com",
       "password": "nurseSarah456",
       "name": "Sarah Walker",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "1"
     },
     {
       "id": "9",
       "email": "nurse.daniel@example.com",
       "password": "nurseDaniel789",
       "name": "Daniel King",
-      "hospital": "Victoria General"
+      "hospitalID": "1"
     },
     {
       "id": "10",
       "email": "nurse.julia@example.com",
       "password": "nurseJulia123",
       "name": "Julia Scott",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "1"
     }
   ],
   "emts": [
@@ -247,70 +247,70 @@
       "email": "doctor.john@example.com",
       "password": "doctorJohn123",
       "name": "John Carter",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "2",
       "email": "doctor.emma@example.com",
       "password": "doctorEmma456",
       "name": "Emma Clark",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "3"
     },
     {
       "id": "3",
       "email": "doctor.william@example.com",
       "password": "doctorWilliam789",
       "name": "William Foster",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "4",
       "email": "doctor.sophia@example.com",
       "password": "doctorSophia123",
       "name": "Sophia Bell",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "3"
     },
     {
       "id": "5",
       "email": "doctor.jacob@example.com",
       "password": "doctorJacob456",
       "name": "Jacob Price",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "6",
       "email": "doctor.ava@example.com",
       "password": "doctorAva789",
       "name": "Ava Perry",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "3"
     },
     {
       "id": "7",
       "email": "doctor.mason@example.com",
       "password": "doctorMason123",
       "name": "Mason Green",
-      "hospital": "Victoria General"
+      "hospitalID": "2"
     },
     {
       "id": "8",
       "email": "doctor.isabella@example.com",
       "password": "doctorIsabella456",
       "name": "Isabella Young",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "1"
     },
     {
       "id": "9",
       "email": "doctor.elijah@example.com",
       "password": "doctorElijah789",
       "name": "Elijah Turner",
-      "hospital": "Victoria General"
+      "hospitalID": "1"
     },
     {
       "id": "10",
       "email": "doctor.mia@example.com",
       "password": "doctorMia123",
       "name": "Mia Sanders",
-      "hospital": "Royal Jubilee"
+      "hospitalID": "1"
     }
   ],
   "admins": [
@@ -452,7 +452,8 @@
       "patientID": "1",
       "nurseID": "",
       "description": "My arm hurts!",
-      "outcome": ""
+      "outcome": "",
+      "hospitalID": "1"
     }
   ]
 }

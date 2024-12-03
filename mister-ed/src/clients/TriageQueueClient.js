@@ -1,35 +1,27 @@
 class TriageQueueClient {
-    static #instance = null; // Use a protected static instance
-    static #port = null; // Use a protected static port property
+    #port = null;
+    #hospitalID = null;
 
-    constructor(port) {
-        if (TriageQueueClient.#instance) {
-            throw new Error(
-                `${new.target.name} is a singleton class. Use ${
-                    new.target.name
-                }.getInstance() to access the instance.`
-            );
+    constructor(hospitalID, port = 3003) {
+        if (!hospitalID) {
+            throw new Error('Hospital ID is required to create a TriageQueueClient instance.');
         }
-
-        if (port !== undefined) {
-            TriageQueueClient.#port = port; // Set the port in the static property
-        }
+        this.#hospitalID = hospitalID;
+        this.#port = port;
     }
 
-    static getInstance(port) {
-        if (!this.#instance) {
-            this.#instance = new this(port); // Calls the constructor of the subclass with the port
-        }
-        return this.#instance;
+    get hospitalID() {
+        return this.#hospitalID;
     }
 
     get port() {
-        return TriageQueueClient.#port; // Access the static protected port property
+        return this.#port;
     }
 
     // POST request
     async push(item) {
-        const response = await fetch(`http://localhost:${this.port}/queue`, {
+        if (!this.#hospitalID) throw new Error('Hospital ID is not set.');
+        const response = await fetch(`http://localhost:${this.#port}/queue/${this.#hospitalID}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ item }),
@@ -45,7 +37,8 @@ class TriageQueueClient {
 
     // DELETE request
     async pop() {
-        const response = await fetch(`http://localhost:${this.port}/queue`, {
+        if (!this.#hospitalID) throw new Error('Hospital ID is not set');
+        const response = await fetch(`http://localhost:${this.#port}/queue/${this.#hospitalID}`, {
             method: 'DELETE',
         });
 
@@ -59,4 +52,4 @@ class TriageQueueClient {
     }
 }
 
-export default TriageQueueClient.getInstance(3003);
+export default TriageQueueClient;

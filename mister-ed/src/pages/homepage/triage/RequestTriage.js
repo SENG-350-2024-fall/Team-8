@@ -3,6 +3,7 @@ import { Button, FormControl, InputLabel, Select, MenuItem, Box, TextField, Grid
 import { useNavigate } from 'react-router-dom';
 import DatabaseClient from '../../../clients/DatabaseClient';
 import Logger from '../../../logging/Logger';
+import TriageQueueClient from '../../../clients/TriageQueueClient';
 
 const logger = new Logger();
 
@@ -11,7 +12,7 @@ function RequestTriage() {
 	const [selectedHospital, setSelectedHospital] = useState('');
 	const [error, setError] = useState('');
   const navigate = useNavigate();
-  const [queuePosition, setQueuePosition] = useState(null);
+  const [showQueueMessage, setshowQueueMessage] = useState(false);
   const [triageRequestDescription, setTriageRequestDescription] = useState();
   const [user, setUser] = useState(null);
 
@@ -51,20 +52,6 @@ function RequestTriage() {
       setError('Please provide a reason.');
       return;
     }
-    
-    try {
-			// Fetch hospital data to get queue count
-			const hospitalData = await DatabaseClient.fetch(`hospitals/${selectedHospital}`);
-			const currentQueue = hospitalData.queue;
-			// Update hospital queue count
-			const newQueuePosition = currentQueue + 1;
-			await DatabaseClient.update(`hospitals/${selectedHospital}`, { queue: newQueuePosition });
-			// Display user's position in queue
-			setQueuePosition(newQueuePosition);
-		} catch (error) {
-			console.error('Error updating queue:', error);
-			setError('Could not submit request. Please try again.');
-		}
   
     try {
       const recordData = {
@@ -73,15 +60,21 @@ function RequestTriage() {
         nurseID: '', // Initially empty
         description: triageRequestDescription,
         outcome: '', // Initially empty
+        hospitalID: selectedHospital,
       };
       
       const response = await DatabaseClient.post('triage_records', recordData);
       if (response.ok) {
+        const createdRecord = await response.json();
+        const queueClient = new TriageQueueClient(selectedHospital);
+        await queueClient.push(createdRecord.id); // Push the ID to the queue for the selected hospital
         logger.info(`Record created: ${JSON.stringify(recordData)}`);
         setError('');
       } else {
         throw new Error('Failed to create record');
       }
+
+      setshowQueueMessage(true);
     
     } catch (error) {
       setError('Could not submit request. Please try again.');
@@ -124,10 +117,9 @@ function RequestTriage() {
       </div>
       {/* Main content */}
       <div style={{ maxWidth: '400px', margin: '0 auto', textAlign: 'center', marginTop: '50px' }}>
-        {queuePosition ? (
+        {showQueueMessage ? (
           <p>
             You are in the queue for <strong>{selectedHospitalDetails?.name}</strong>.
-            Your position in the queue: {queuePosition}
           </p>
         ) : (
           <form onSubmit={handleSubmit}>
