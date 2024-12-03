@@ -17,8 +17,6 @@ import Logger from '../../logging/Logger';
 
 const LOG = new Logger();
 
-const handleSubmit = async (e) => {};
-
 function BookAppointment() {
     const [open, setOpen] = useState(true);
     const [error, setError] = useState('');
@@ -29,6 +27,22 @@ function BookAppointment() {
     const [doctors, setDoctors] = useState([]);
     const [selectedPatient, setSelectedPatient] = useState('');
     const [patients, setPatients] = useState([]);
+    const [user, setUser] = useState(null);
+
+    // Load user data from localStorage
+    useEffect(() => {
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            try {
+                setUser(JSON.parse(userData));
+            } catch (error) {
+                LOG.error(
+                    `Error parsing user data in Request Triage Page`,
+                    error
+                );
+            }
+        }
+    }, []);
 
     useEffect(() => {
         const fetchDoctors = async () => {
@@ -64,6 +78,7 @@ function BookAppointment() {
             { value: selectedDay, label: 'Date' },
             { value: selectedTime, label: 'Time' },
         ];
+        // Check if all required fields are filled upon submission
         const missing_fields = req_fields
             .filter((field) => field.value.trim() === '')
             .map((field) => field.label);
@@ -79,6 +94,7 @@ function BookAppointment() {
             appointmentNotes
         );
         try {
+            LOG.info(`Adding appointment id=${appointment}`);
             await DatabaseClient.post('appointments', appointment);
         } catch (err) {
             LOG.error('Error making database call', err);
@@ -153,11 +169,20 @@ function BookAppointment() {
                                 }
                                 fullWidth
                             >
-                                {doctors.map((doctor) => (
-                                    <MenuItem key={doctor.id} value={doctor.id}>
-                                        {doctor.name}
-                                    </MenuItem>
-                                ))}
+                                {doctors
+                                    .filter(
+                                        (doctor) =>
+                                            doctor.hospitalID ===
+                                            user.hospitalID
+                                    )
+                                    .map((doctor) => (
+                                        <MenuItem
+                                            key={doctor.id}
+                                            value={doctor.id}
+                                        >
+                                            {doctor.name}
+                                        </MenuItem>
+                                    ))}
                             </Select>
                         </div>
                         <div>
