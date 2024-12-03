@@ -12,6 +12,7 @@ import DatabaseClient from '../../../clients/DatabaseClient';
 import TriageQueueClient from '../../../clients/TriageQueueClient';
 import Logger from '../../../logging/Logger';
 import useNextPatient from '../../../hooks/useNextPatient';
+import BookAppointment from '../../appointment/BookAppointment';
 
 const LOG = new Logger();
 
@@ -23,17 +24,21 @@ function PerformTriage() {
     const [error, setError] = useState(null);
     const { getNextPatient, isReady } = useNextPatient(); // Access queueClient readiness (it takes time to load nurse's ID and find the corresponding hospital queue)
     const [user, setUser] = useState(null);
+    const [isAppointmentVisible, setIsAppointmentVisible] = useState(false);
 
     // Load user data from localStorage
     useEffect(() => {
-      const userData = localStorage.getItem('user');
-      if (userData) {
-        try {
-          setUser(JSON.parse(userData));
-        } catch (error) {
-          LOG.error(`Error parsing user data in Request Triage Page`, error);
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            try {
+                setUser(JSON.parse(userData));
+            } catch (error) {
+                LOG.error(
+                    `Error parsing user data in Request Triage Page`,
+                    error
+                );
+            }
         }
-      }
     }, []);
 
     // Function to handle the "Get Next" button click
@@ -55,21 +60,24 @@ function PerformTriage() {
             );
             if (foundRecord) setTriageRecord(foundRecord);
             // Find the patient of this triage record
-            LOG.info(`Attempting to retrieve patient of id: ${foundRecord.patientID}`);
+            LOG.info(
+                `Attempting to retrieve patient of id: ${foundRecord.patientID}`
+            );
             const patients = await DatabaseClient.fetch('patients');
             const foundPatient = patients?.find(
-                (patient) => String(patient.id) === String(foundRecord.patientID)
+                (patient) =>
+                    String(patient.id) === String(foundRecord.patientID)
             );
             if (foundPatient) setPatient(foundPatient);
         } catch (err) {
             // Handle errors differently as needed (for debugging and displaying specific error messages to user)
             if (err.message.includes('Queue is empty')) {
-              setError('Queue is empty.');
-              LOG.error('Queue is empty', err);
+                setError('Queue is empty.');
+                LOG.error('Queue is empty', err);
             } else {
-              console.error(err);
-              setError('Could not fetch the next patient.');
-              LOG.error('Could not fetch the next patient', err);
+                console.error(err);
+                setError('Could not fetch the next patient.');
+                LOG.error('Could not fetch the next patient', err);
             }
         }
     };
@@ -91,6 +99,14 @@ function PerformTriage() {
         setPatient(null);
         setOutcome('');
     };
+
+    function handleAppointment() {
+        const appointment_form = document.getElementById('appointment-form');
+        setIsAppointmentVisible(!isAppointmentVisible);
+        isAppointmentVisible
+            ? (appointment_form.style.display = 'block')
+            : (appointment_form.style.display = 'none');
+    }
 
     return (
         <div style={{ textAlign: 'center', margin: '20px' }}>
@@ -125,6 +141,9 @@ function PerformTriage() {
                         rows='4'
                         style={{ width: '100%', margin: '10px 0' }}
                     />
+                    <div id='appointment-form' style={{ display: 'none' }}>
+                        <BookAppointment></BookAppointment>
+                    </div>
                     <div>
                         <Button
                             onClick={handleAction}
@@ -135,7 +154,7 @@ function PerformTriage() {
                             Submit Response
                         </Button>
                         <Button
-                            onClick={handleAction}
+                            onClick={handleAppointment}
                             type='submit'
                             variant='contained'
                             style={{ margin: '20px' }}

@@ -1,459 +1,450 @@
 {
-  "patients": [
-    {
-      "id": "1",
-      "email": "alice.smith@example.com",
-      "password": "alicePass123",
-      "name": "Alice Smith",
-      "age": "28",
-      "postal": "V1A 1B2"
-    },
-    {
-      "id": "2",
-      "email": "john.doe@example.com",
-      "password": "johnSecure456",
-      "name": "John Doe",
-      "age": "35",
-      "postal": "V2B 2C3"
-    },
-    {
-      "id": "3",
-      "email": "emma.wilson@example.com",
-      "password": "emmaSecure789",
-      "name": "Emma Wilson",
-      "age": "22",
-      "postal": "V3C 3D4"
-    },
-    {
-      "id": "4",
-      "email": "matthew.jones@example.com",
-      "password": "matthewPass123",
-      "name": "Matthew Jones",
-      "age": "40",
-      "postal": "V4D 4E5"
-    },
-    {
-      "id": "5",
-      "email": "sophia.brown@example.com",
-      "password": "sophiaSafe456",
-      "name": "Sophia Brown",
-      "age": "30",
-      "postal": "V5E 5F6"
-    },
-    {
-      "id": "6",
-      "email": "oliver.davis@example.com",
-      "password": "oliverPass789",
-      "name": "Oliver Davis",
-      "age": "45",
-      "postal": "V6F 6G7"
-    },
-    {
-      "id": "7",
-      "email": "isabella.miller@example.com",
-      "password": "isabellaSecure123",
-      "name": "Isabella Miller",
-      "age": "25",
-      "postal": "V7G 7H8"
-    },
-    {
-      "id": "8",
-      "email": "ethan.moore@example.com",
-      "password": "ethanSafe456",
-      "name": "Ethan Moore",
-      "age": "33",
-      "postal": "V8H 8I9"
-    },
-    {
-      "id": "9",
-      "email": "mia.anderson@example.com",
-      "password": "miaPass789",
-      "name": "Mia Anderson",
-      "age": "29",
-      "postal": "V9I 9J0"
-    },
-    {
-      "id": "10",
-      "email": "testuser@email.com",
-      "password": "password",
-      "name": "Test User",
-      "age": "40",
-      "postal": "V0J 0K1"
-    },
-    {
-      "id": "37a2",
-      "email": "Kate.Will@example.com",
-      "password": "KattyWill1234",
-      "name": "Kate William",
-      "age": "24",
-      "postal": "V9A 2L3"
-    },
-    {
-      "id": "47d0",
-      "email": "Rob.reed32@example.com",
-      "password": "123456789",
-      "name": "Robert Reed",
-      "age": "23",
-      "postal": "V2D 4G9"
-    }
-  ],
-  "nurses": [
-    {
-      "id": "1",
-      "email": "nurse.alex@example.com",
-      "password": "nurseAlex123",
-      "name": "Alex Thompson",
-      "hospitalID": "2"
-    },
-    {
-      "id": "2",
-      "email": "nurse.lucy@example.com",
-      "password": "nurseLucy456",
-      "name": "Lucy Evans",
-      "hospitalID": "3"
-    },
-    {
-      "id": "3",
-      "email": "nurse.james@example.com",
-      "password": "nurseJames789",
-      "name": "James White",
-      "hospitalID": "2"
-    },
-    {
-      "id": "4",
-      "email": "nurse.olivia@example.com",
-      "password": "nurseOlivia123",
-      "name": "Olivia Harris",
-      "hospitalID": "3"
-    },
-    {
-      "id": "5",
-      "email": "nurse.michael@example.com",
-      "password": "nurseMichael456",
-      "name": "Michael Clark",
-      "hospitalID": "2"
-    },
-    {
-      "id": "6",
-      "email": "nurse.chloe@example.com",
-      "password": "nurseChloe789",
-      "name": "Chloe Lewis",
-      "hospitalID": "3"
-    },
-    {
-      "id": "7",
-      "email": "nurse.david@example.com",
-      "password": "nurseDavid123",
-      "name": "David Robinson",
-      "hospitalID": "2"
-    },
-    {
-      "id": "8",
-      "email": "nurse.sarah@example.com",
-      "password": "nurseSarah456",
-      "name": "Sarah Walker",
-      "hospitalID": "1"
-    },
-    {
-      "id": "9",
-      "email": "nurse.daniel@example.com",
-      "password": "nurseDaniel789",
-      "name": "Daniel King",
-      "hospitalID": "1"
-    },
-    {
-      "id": "10",
-      "email": "nurse.julia@example.com",
-      "password": "nurseJulia123",
-      "name": "Julia Scott",
-      "hospitalID": "1"
-    }
-  ],
-  "emts": [
-    {
-      "id": "1",
-      "email": "jack.taylor@example.com",
-      "password": "jackSecure123",
-      "name": "Jack Taylor",
-      "available": false
-    },
-    {
-      "id": "2",
-      "email": "sarah.lee@example.com",
-      "password": "sarahPass456",
-      "name": "Sarah Lee",
-      "available": false
-    },
-    {
-      "id": "3",
-      "email": "michael.brown@example.com",
-      "password": "michaelSafe789",
-      "name": "Michael Brown",
-      "available": false
-    },
-    {
-      "id": "4",
-      "email": "linda.green@example.com",
-      "password": "lindaPass123",
-      "name": "Linda Green",
-      "available": false
-    },
-    {
-      "id": "5",
-      "email": "david.king@example.com",
-      "password": "davidSecure456",
-      "name": "David King",
-      "available": false
-    },
-    {
-      "id": "6",
-      "email": "amy.jones@example.com",
-      "password": "amyPass789",
-      "name": "Amy Jones",
-      "available": false
-    },
-    {
-      "id": "7",
-      "email": "peter.white@example.com",
-      "password": "peterSecure123",
-      "name": "Peter White",
-      "available": false
-    },
-    {
-      "id": "8",
-      "email": "rachel.adams@example.com",
-      "password": "rachelPass456",
-      "name": "Rachel Adams",
-      "available": false
-    },
-    {
-      "id": "9",
-      "email": "chris.evans@example.com",
-      "password": "chrisSafe789",
-      "name": "Chris Evans",
-      "available": false
-    },
-    {
-      "id": "10",
-      "email": "natalie.moore@example.com",
-      "password": "nataliePass123",
-      "name": "Natalie Moore",
-      "available": false
-    }
-  ],
-  "doctors": [
-    {
-      "id": "1",
-      "email": "doctor.john@example.com",
-      "password": "doctorJohn123",
-      "name": "John Carter",
-      "hospitalID": "2"
-    },
-    {
-      "id": "2",
-      "email": "doctor.emma@example.com",
-      "password": "doctorEmma456",
-      "name": "Emma Clark",
-      "hospitalID": "3"
-    },
-    {
-      "id": "3",
-      "email": "doctor.william@example.com",
-      "password": "doctorWilliam789",
-      "name": "William Foster",
-      "hospitalID": "2"
-    },
-    {
-      "id": "4",
-      "email": "doctor.sophia@example.com",
-      "password": "doctorSophia123",
-      "name": "Sophia Bell",
-      "hospitalID": "3"
-    },
-    {
-      "id": "5",
-      "email": "doctor.jacob@example.com",
-      "password": "doctorJacob456",
-      "name": "Jacob Price",
-      "hospitalID": "2"
-    },
-    {
-      "id": "6",
-      "email": "doctor.ava@example.com",
-      "password": "doctorAva789",
-      "name": "Ava Perry",
-      "hospitalID": "3"
-    },
-    {
-      "id": "7",
-      "email": "doctor.mason@example.com",
-      "password": "doctorMason123",
-      "name": "Mason Green",
-      "hospitalID": "2"
-    },
-    {
-      "id": "8",
-      "email": "doctor.isabella@example.com",
-      "password": "doctorIsabella456",
-      "name": "Isabella Young",
-      "hospitalID": "1"
-    },
-    {
-      "id": "9",
-      "email": "doctor.elijah@example.com",
-      "password": "doctorElijah789",
-      "name": "Elijah Turner",
-      "hospitalID": "1"
-    },
-    {
-      "id": "10",
-      "email": "doctor.mia@example.com",
-      "password": "doctorMia123",
-      "name": "Mia Sanders",
-      "hospitalID": "1"
-    }
-  ],
-  "admins": [
-    {
-      "id": "1",
-      "email": "admin.jason@example.com",
-      "password": "adminJason123",
-      "name": "Jason Wright"
-    },
-    {
-      "id": "2",
-      "email": "admin.amy@example.com",
-      "password": "adminAmy456",
-      "name": "Amy Johnson"
-    },
-    {
-      "id": "3",
-      "email": "admin.michael@example.com",
-      "password": "adminMichael789",
-      "name": "Michael Lee"
-    },
-    {
-      "id": "4",
-      "email": "admin.susan@example.com",
-      "password": "adminSusan123",
-      "name": "Susan Davis"
-    },
-    {
-      "id": "5",
-      "email": "admin.robert@example.com",
-      "password": "adminRobert456",
-      "name": "Robert Brown"
-    }
-  ],
-  "support": [
-    {
-      "id": "ead6",
-      "Category": "Account Issues",
-      "Message": "There is an issue when viewing my profile.",
-      "User": {
-        "id": "2",
-        "name": "John Doe",
-        "email": "john.doe@example.com",
-        "role": "Patient"
-      },
-      "Priority": "Medium",
-      "Status": "Open",
-      "CreateTime": "2024-11-18T04:54:29.186Z",
-      "LastUpdateTime": "2024-11-18T07:28:02.610Z",
-      "Comments": [
+    "patients": [
         {
-          "text": "Writing a comment",
-          "timestamp": "2024-11-18T07:22:30.217Z"
+            "id": "1",
+            "email": "alice.smith@example.com",
+            "password": "alicePass123",
+            "name": "Alice Smith",
+            "age": "28",
+            "postal": "V1A 1B2"
         },
         {
-          "text": "Some comment",
-          "timestamp": "2024-11-18T07:23:59.310Z"
-        }
-      ]
-    },
-    {
-      "id": "f0f2",
-      "Category": "Triage Issues",
-      "Message": "My triage is not starting. No matter how long I wait in the queue, I am not making any progress.",
-      "User": {
-        "id": "2",
-        "name": "John Doe",
-        "email": "john.doe@example.com",
-        "role": "Patient"
-      },
-      "Priority": "Not Set",
-      "Status": "Open",
-      "CreateTime": "2024-11-18T04:55:21.382Z",
-      "LastUpdateTime": "2024-11-18T04:55:21.382Z",
-      "Comments": []
-    },
-    {
-      "id": "7eba",
-      "Category": "Booking Appointments",
-      "Message": "I cannot book appointment for patients. For some reason, it is not getting saved and does not show in the schedule.",
-      "User": {
-        "id": "4",
-        "name": "Olivia Harris",
-        "email": "nurse.olivia@example.com",
-        "role": "Nurse"
-      },
-      "Priority": "Not Set",
-      "Status": "Complete",
-      "CreateTime": "2024-11-18T04:57:19.321Z",
-      "LastUpdateTime": "2024-11-18T07:30:04.778Z",
-      "Comments": [
+            "id": "2",
+            "email": "john.doe@example.com",
+            "password": "johnSecure456",
+            "name": "John Doe",
+            "age": "35",
+            "postal": "V2B 2C3"
+        },
         {
-          "text": "This ticket is complete",
-          "timestamp": "2024-11-18T07:30:04.778Z"
+            "id": "3",
+            "email": "emma.wilson@example.com",
+            "password": "emmaSecure789",
+            "name": "Emma Wilson",
+            "age": "22",
+            "postal": "V3C 3D4"
+        },
+        {
+            "id": "4",
+            "email": "matthew.jones@example.com",
+            "password": "matthewPass123",
+            "name": "Matthew Jones",
+            "age": "40",
+            "postal": "V4D 4E5"
+        },
+        {
+            "id": "5",
+            "email": "sophia.brown@example.com",
+            "password": "sophiaSafe456",
+            "name": "Sophia Brown",
+            "age": "30",
+            "postal": "V5E 5F6"
+        },
+        {
+            "id": "6",
+            "email": "oliver.davis@example.com",
+            "password": "oliverPass789",
+            "name": "Oliver Davis",
+            "age": "45",
+            "postal": "V6F 6G7"
+        },
+        {
+            "id": "7",
+            "email": "isabella.miller@example.com",
+            "password": "isabellaSecure123",
+            "name": "Isabella Miller",
+            "age": "25",
+            "postal": "V7G 7H8"
+        },
+        {
+            "id": "8",
+            "email": "ethan.moore@example.com",
+            "password": "ethanSafe456",
+            "name": "Ethan Moore",
+            "age": "33",
+            "postal": "V8H 8I9"
+        },
+        {
+            "id": "9",
+            "email": "mia.anderson@example.com",
+            "password": "miaPass789",
+            "name": "Mia Anderson",
+            "age": "29",
+            "postal": "V9I 9J0"
+        },
+        {
+            "id": "10",
+            "email": "testuser@email.com",
+            "password": "password",
+            "name": "Test User",
+            "age": "40",
+            "postal": "V0J 0K1"
+        },
+        {
+            "id": "37a2",
+            "email": "Kate.Will@example.com",
+            "password": "KattyWill1234",
+            "name": "Kate William",
+            "age": "24",
+            "postal": "V9A 2L3"
+        },
+        {
+            "id": "47d0",
+            "email": "Rob.reed32@example.com",
+            "password": "123456789",
+            "name": "Robert Reed",
+            "age": "23",
+            "postal": "V2D 4G9"
         }
-      ]
-    },
-    {
-      "id": "74cc",
-      "Category": "System Feedback",
-      "Message": "The schedule is very hard to read. It is hard to decipher who the patient is and what time the appointment is. Just is not a user friendly schedule.",
-      "User": {
-        "id": "8",
-        "name": "Isabella Young",
-        "email": "doctor.isabella@example.com",
-        "role": "Doctor"
-      },
-      "Priority": "Not Set",
-      "Status": "Open",
-      "CreateTime": "2024-11-18T05:00:22.163Z",
-      "LastUpdateTime": "2024-11-18T05:00:22.163Z",
-      "Comments": []
-    }
-  ],
-  "hospitals": [
-    {
-      "id": "1",
-      "name": "Saanich Peninsula Hospital",
-      "postal": "V8M 2B2",
-      "queue": 0
-    },
-    {
-      "id": "2",
-      "name": "Victoria General Hospital",
-      "postal": "V8Z 6R5",
-      "queue": 0
-    },
-    {
-      "id": "3",
-      "name": "Royal Jubilee Hospital",
-      "postal": "V8R 1J8",
-      "queue": 0
-    }
-  ],
-  "triage_records": [
-    {
-      "id": "23",
-      "lastModified": "2024-11-14T15:44:25.582Z",
-      "patientID": "1",
-      "nurseID": "",
-      "description": "My arm hurts!",
-      "outcome": "",
-      "hospitalID": "1"
-    }
-  ]
+    ],
+    "nurses": [
+        {
+            "id": "1",
+            "email": "nurse.alex@example.com",
+            "password": "nurseAlex123",
+            "name": "Alex Thompson",
+            "hospitalID": "2"
+        },
+        {
+            "id": "2",
+            "email": "nurse.lucy@example.com",
+            "password": "nurseLucy456",
+            "name": "Lucy Evans",
+            "hospitalID": "3"
+        },
+        {
+            "id": "3",
+            "email": "nurse.james@example.com",
+            "password": "nurseJames789",
+            "name": "James White",
+            "hospitalID": "2"
+        },
+        {
+            "id": "4",
+            "email": "nurse.olivia@example.com",
+            "password": "nurseOlivia123",
+            "name": "Olivia Harris",
+            "hospitalID": "3"
+        },
+        {
+            "id": "5",
+            "email": "nurse.michael@example.com",
+            "password": "nurseMichael456",
+            "name": "Michael Clark",
+            "hospitalID": "2"
+        },
+        {
+            "id": "6",
+            "email": "nurse.chloe@example.com",
+            "password": "nurseChloe789",
+            "name": "Chloe Lewis",
+            "hospitalID": "3"
+        },
+        {
+            "id": "7",
+            "email": "nurse.david@example.com",
+            "password": "nurseDavid123",
+            "name": "David Robinson",
+            "hospitalID": "2"
+        },
+        {
+            "id": "8",
+            "email": "nurse.sarah@example.com",
+            "password": "nurseSarah456",
+            "name": "Sarah Walker",
+            "hospitalID": "1"
+        },
+        {
+            "id": "9",
+            "email": "nurse.daniel@example.com",
+            "password": "nurseDaniel789",
+            "name": "Daniel King",
+            "hospitalID": "1"
+        },
+        {
+            "id": "10",
+            "email": "nurse.julia@example.com",
+            "password": "nurseJulia123",
+            "name": "Julia Scott",
+            "hospitalID": "1"
+        }
+    ],
+    "emts": [
+        {
+            "id": "1",
+            "email": "jack.taylor@example.com",
+            "password": "jackSecure123",
+            "name": "Jack Taylor",
+            "available": false
+        },
+        {
+            "id": "2",
+            "email": "sarah.lee@example.com",
+            "password": "sarahPass456",
+            "name": "Sarah Lee",
+            "available": false
+        },
+        {
+            "id": "3",
+            "email": "michael.brown@example.com",
+            "password": "michaelSafe789",
+            "name": "Michael Brown",
+            "available": false
+        },
+        {
+            "id": "4",
+            "email": "linda.green@example.com",
+            "password": "lindaPass123",
+            "name": "Linda Green",
+            "available": false
+        },
+        {
+            "id": "5",
+            "email": "david.king@example.com",
+            "password": "davidSecure456",
+            "name": "David King",
+            "available": false
+        },
+        {
+            "id": "6",
+            "email": "amy.jones@example.com",
+            "password": "amyPass789",
+            "name": "Amy Jones",
+            "available": false
+        },
+        {
+            "id": "7",
+            "email": "peter.white@example.com",
+            "password": "peterSecure123",
+            "name": "Peter White",
+            "available": false
+        },
+        {
+            "id": "8",
+            "email": "rachel.adams@example.com",
+            "password": "rachelPass456",
+            "name": "Rachel Adams",
+            "available": false
+        },
+        {
+            "id": "9",
+            "email": "chris.evans@example.com",
+            "password": "chrisSafe789",
+            "name": "Chris Evans",
+            "available": false
+        },
+        {
+            "id": "10",
+            "email": "natalie.moore@example.com",
+            "password": "nataliePass123",
+            "name": "Natalie Moore",
+            "available": false
+        }
+    ],
+    "doctors": [
+        {
+            "id": "1",
+            "email": "doctor.john@example.com",
+            "password": "doctorJohn123",
+            "name": "John Carter",
+            "hospitalID": "2"
+        },
+        {
+            "id": "2",
+            "email": "doctor.emma@example.com",
+            "password": "doctorEmma456",
+            "name": "Emma Clark",
+            "hospitalID": "3"
+        },
+        {
+            "id": "3",
+            "email": "doctor.william@example.com",
+            "password": "doctorWilliam789",
+            "name": "William Foster",
+            "hospitalID": "2"
+        },
+        {
+            "id": "4",
+            "email": "doctor.sophia@example.com",
+            "password": "doctorSophia123",
+            "name": "Sophia Bell",
+            "hospitalID": "3"
+        },
+        {
+            "id": "5",
+            "email": "doctor.jacob@example.com",
+            "password": "doctorJacob456",
+            "name": "Jacob Price",
+            "hospitalID": "2"
+        },
+        {
+            "id": "6",
+            "email": "doctor.ava@example.com",
+            "password": "doctorAva789",
+            "name": "Ava Perry",
+            "hospitalID": "3"
+        },
+        {
+            "id": "7",
+            "email": "doctor.mason@example.com",
+            "password": "doctorMason123",
+            "name": "Mason Green",
+            "hospitalID": "2"
+        },
+        {
+            "id": "8",
+            "email": "doctor.isabella@example.com",
+            "password": "doctorIsabella456",
+            "name": "Isabella Young",
+            "hospitalID": "1"
+        },
+        {
+            "id": "9",
+            "email": "doctor.elijah@example.com",
+            "password": "doctorElijah789",
+            "name": "Elijah Turner",
+            "hospitalID": "1"
+        },
+        {
+            "id": "10",
+            "email": "doctor.mia@example.com",
+            "password": "doctorMia123",
+            "name": "Mia Sanders",
+            "hospitalID": "1"
+        }
+    ],
+    "admins": [
+        {
+            "id": "1",
+            "email": "admin.jason@example.com",
+            "password": "adminJason123",
+            "name": "Jason Wright"
+        },
+        {
+            "id": "2",
+            "email": "admin.amy@example.com",
+            "password": "adminAmy456",
+            "name": "Amy Johnson"
+        },
+        {
+            "id": "3",
+            "email": "admin.michael@example.com",
+            "password": "adminMichael789",
+            "name": "Michael Lee"
+        },
+        {
+            "id": "4",
+            "email": "admin.susan@example.com",
+            "password": "adminSusan123",
+            "name": "Susan Davis"
+        },
+        {
+            "id": "5",
+            "email": "admin.robert@example.com",
+            "password": "adminRobert456",
+            "name": "Robert Brown"
+        }
+    ],
+    "support": [
+        {
+            "id": "ead6",
+            "Category": "Account Issues",
+            "Message": "There is an issue when viewing my profile.",
+            "User": {
+                "id": "2",
+                "name": "John Doe",
+                "email": "john.doe@example.com",
+                "role": "Patient"
+            },
+            "Priority": "Medium",
+            "Status": "Open",
+            "CreateTime": "2024-11-18T04:54:29.186Z",
+            "LastUpdateTime": "2024-11-18T07:28:02.610Z",
+            "Comments": [
+                {
+                    "text": "Writing a comment",
+                    "timestamp": "2024-11-18T07:22:30.217Z"
+                },
+                {
+                    "text": "Some comment",
+                    "timestamp": "2024-11-18T07:23:59.310Z"
+                }
+            ]
+        },
+        {
+            "id": "f0f2",
+            "Category": "Triage Issues",
+            "Message": "My triage is not starting. No matter how long I wait in the queue, I am not making any progress.",
+            "User": {
+                "id": "2",
+                "name": "John Doe",
+                "email": "john.doe@example.com",
+                "role": "Patient"
+            },
+            "Priority": "Not Set",
+            "Status": "Open",
+            "CreateTime": "2024-11-18T04:55:21.382Z",
+            "LastUpdateTime": "2024-11-18T04:55:21.382Z",
+            "Comments": []
+        },
+        {
+            "id": "7eba",
+            "Category": "Booking Appointments",
+            "Message": "I cannot book appointment for patients. For some reason, it is not getting saved and does not show in the schedule.",
+            "User": {
+                "id": "4",
+                "name": "Olivia Harris",
+                "email": "nurse.olivia@example.com",
+                "role": "Nurse"
+            },
+            "Priority": "Not Set",
+            "Status": "Complete",
+            "CreateTime": "2024-11-18T04:57:19.321Z",
+            "LastUpdateTime": "2024-11-18T07:30:04.778Z",
+            "Comments": [
+                {
+                    "text": "This ticket is complete",
+                    "timestamp": "2024-11-18T07:30:04.778Z"
+                }
+            ]
+        },
+        {
+            "id": "74cc",
+            "Category": "System Feedback",
+            "Message": "The schedule is very hard to read. It is hard to decipher who the patient is and what time the appointment is. Just is not a user friendly schedule.",
+            "User": {
+                "id": "8",
+                "name": "Isabella Young",
+                "email": "doctor.isabella@example.com",
+                "role": "Doctor"
+            },
+            "Priority": "Not Set",
+            "Status": "Open",
+            "CreateTime": "2024-11-18T05:00:22.163Z",
+            "LastUpdateTime": "2024-11-18T05:00:22.163Z",
+            "Comments": []
+        }
+    ],
+    "hospitals": [
+        {
+            "id": "1",
+            "name": "Saanich Peninsula Hospital",
+            "postal": "V8M 2B2",
+            "queue": 0
+        },
+        {
+            "id": "2",
+            "name": "Victoria General Hospital",
+            "postal": "V8Z 6R5",
+            "queue": 0
+        },
+        {
+            "id": "3",
+            "name": "Royal Jubilee Hospital",
+            "postal": "V8R 1J8",
+            "queue": 0
+        }
+    ],
+    "triage_records": [],
+    "appointments": []
 }
