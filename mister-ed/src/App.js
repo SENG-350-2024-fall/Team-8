@@ -16,6 +16,7 @@ import PerformTriage from './pages/homepage/triage/PerformTriage';
 import Triage from './pages/homepage/triage/Triage';
 import RequestTriage from './pages/homepage/triage/RequestTriage';
 import Profile from './pages/homepage/profile/Profile';
+import Appointment from './pages/appointment/AppointmentView';
 import HomeEMT from './pages/homepage/HomeEMT';
 import ProtectedRoute from './pages/ProtectedRoute';
 import { QueueProvider } from './context/QueueContext';
