@@ -18,6 +18,10 @@ import RequestTriage from './pages/homepage/triage/RequestTriage';
 import Profile from './pages/homepage/profile/Profile';
 import Appointment from './pages/appointment/AppointmentView';
 import HomeEMT from './pages/homepage/HomeEMT';
+import HomePatient from './pages/homepage/HomePatient';
+import HomeNurse from './pages/homepage/HomeNurse';
+import HomeAdmin from './pages/homepage/HomeAdmin';
+import HomeDoctor from './pages/homepage/HomeDoctor';
 import ProtectedRoute from './pages/ProtectedRoute';
 import { QueueProvider } from './context/QueueContext';
 import './App.css';
@@ -40,6 +44,10 @@ function App() {
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/appointment" element={<ProtectedRoute><Appointment /></ProtectedRoute>} />
           <Route path="/homeEMT" element={<ProtectedRoute><HomeEMT /></ProtectedRoute>} />
+          <Route path="/homePatient" element={<ProtectedRoute><HomePatient /></ProtectedRoute>} />
+          <Route path="/homeNurse" element={<ProtectedRoute><HomeNurse /></ProtectedRoute>} />
+          <Route path="/homeAdmin" element={<ProtectedRoute><HomeAdmin /></ProtectedRoute>} />
+          <Route path="/homeDoctor" element={<ProtectedRoute><HomeDoctor /></ProtectedRoute>} />
           <Route path="/" element={<Navigate to="/landing" />} />
         </Routes>
       </div>

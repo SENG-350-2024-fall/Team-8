@@ -87,6 +87,24 @@ function AppointmentsCalendar() {
         setDailyAppointments(sortedAppointments);
     }, [appointments, patients, doctors, selectedDate, user]);
 
+    // Function to handle going back
+    const handleGoBack = () => {
+        // Navigate to the Home Page
+
+        if (user.role === 'Admin') {
+            navigate('/homeAdmin');
+        } else if (user.role === 'Nurse') {
+            navigate('/homeNurse');
+        } else if (user.role === 'Doctor') {
+            navigate('/homeDoctor');
+        } else if (user.role === 'EMT') {
+            navigate('/homeEMT');
+        } else {
+            navigate('/homePatient');
+        }
+
+    };
+
     return (
         <div>
             <h1>Appointments</h1>
@@ -128,7 +146,7 @@ function AppointmentsCalendar() {
                 <Button
                     variant="contained"
                     color="error"
-                    onClick={() => navigate('/home')} // Adjust path as per your homepage route
+                    onClick={handleGoBack} // Adjust path as per your homepage route
                 >
                     Homepage
                 </Button>

@@ -3,7 +3,7 @@ import { Button, Grid, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import DatabaseClient from '../../clients/DatabaseClient';
 
-function HomeEMT() {
+function HomeAdmin() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   
@@ -25,23 +25,12 @@ function HomeEMT() {
     navigate('/login');
 };
 
-  return (
+return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px' }}>
       <h1>Home</h1>
 
       {/* Grid of buttons */}
       <Grid container spacing={2} justifyContent="center" style={{ maxWidth: '600px' }}>
-        <Grid item xs={6}>
-          <Button 
-            variant="contained" 
-            color="error" 
-            fullWidth 
-            style={{ padding: '20px' }} 
-            onClick={() => alert('Dispatch Requests Clicked')}
-          >
-            Dispatch Requests
-          </Button>
-        </Grid>
         <Grid item xs={6}>
           <Button 
             variant="contained" 
@@ -70,7 +59,7 @@ function HomeEMT() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => navigate('/support')} //Navigate to the Support Page
+            onClick={() => navigate('/support-admin')} //Navigate to the Support Admin Page
           >
             Support
           </Button>
@@ -92,6 +81,6 @@ function HomeEMT() {
   );
 }
 
-export default HomeEMT;
+export default HomeAdmin;
 
 

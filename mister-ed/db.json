@@ -423,6 +423,43 @@
       "CreateTime": "2024-11-18T05:00:22.163Z",
       "LastUpdateTime": "2024-11-18T05:00:22.163Z",
       "Comments": []
+    },
+    {
+      "id": "12da",
+      "Category": "Emergency Dispatch Issues",
+      "Message": "Dispatch button not working!!!",
+      "User": {
+        "id": "1",
+        "name": "Jack Taylor",
+        "email": "jack.taylor@example.com",
+        "role": "EMT"
+      },
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-12-06T21:41:03.159Z",
+      "LastUpdateTime": "2024-12-06T21:42:08.889Z",
+      "Comments": [
+        {
+          "text": "Will get fixed soon.",
+          "timestamp": "2024-12-06T21:42:08.889Z"
+        }
+      ]
+    },
+    {
+      "id": "148f",
+      "Category": "Notifcation Issues",
+      "Message": "Can't see any notifications.",
+      "User": {
+        "id": "1",
+        "name": "John Carter",
+        "email": "doctor.john@example.com",
+        "role": "Doctor"
+      },
+      "Priority": "Not Set",
+      "Status": "Open",
+      "CreateTime": "2024-12-06T21:47:45.466Z",
+      "LastUpdateTime": "2024-12-06T21:47:45.466Z",
+      "Comments": []
     }
   ],
   "hospitals": [
