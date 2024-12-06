@@ -18,6 +18,7 @@ import RequestTriage from './pages/homepage/triage/RequestTriage';
 import Profile from './pages/homepage/profile/Profile';
 import Appointment from './pages/appointment/AppointmentView';
 import HomeEMT from './pages/homepage/HomeEMT';
+import ProtectedRoute from './pages/ProtectedRoute';
 import { QueueProvider } from './context/QueueContext';
 import './App.css';
 
@@ -29,16 +30,16 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/support" element={<SupportPage />} />
-          <Route path="/support-admin" element={<SupportAdminPage />} />
-          <Route path="/ticket-details/:id" element={<TicketDetailPage />} />
-		      <Route path="/triage" element={<Triage />} />
-		      <Route path="/request-triage" element={<RequestTriage />} />
-          <Route path='/perform-triage' element={<QueueProvider><PerformTriage /></QueueProvider>} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/appointment" element={<Appointment />} />
-          <Route path="/homeEMT" element={<HomeEMT />} />
+          <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
+          <Route path="/support" element={<ProtectedRoute><SupportPage /></ProtectedRoute>} />
+          <Route path="/support-admin" element={<ProtectedRoute><SupportAdminPage /></ProtectedRoute>} />
+          <Route path="/ticket-details/:id" element={<ProtectedRoute><TicketDetailPage /></ProtectedRoute>} />
+		      <Route path="/triage" element={<ProtectedRoute><Triage /></ProtectedRoute>} />
+		      <Route path="/request-triage" element={<ProtectedRoute><RequestTriage /></ProtectedRoute>} />
+          <Route path='/perform-triage' element={<ProtectedRoute><QueueProvider><PerformTriage /></QueueProvider></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/appointment" element={<ProtectedRoute><Appointment /></ProtectedRoute>} />
+          <Route path="/homeEMT" element={<ProtectedRoute><HomeEMT /></ProtectedRoute>} />
           <Route path="/" element={<Navigate to="/landing" />} />
         </Routes>
       </div>
