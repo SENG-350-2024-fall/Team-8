@@ -91,7 +91,13 @@ function AppointmentsCalendar() {
         <div>
             <h1>Appointments</h1>
             <Box display="flex" justifyContent="center" alignItems="center" mb={3}>
-                <Calendar onChange={setSelectedDate} value={selectedDate} />
+                <Calendar 
+                    onChange={(date) => {
+                        setDailyAppointments([]); // Clear appointments to prevent rendering stale data
+                        setSelectedDate(date);
+                    }} 
+                    value={selectedDate} 
+                />
             </Box>
             <Typography variant="h6" style={{ marginTop: '20px' }} align="center">
                 Appointments for {selectedDate.toDateString()}:
