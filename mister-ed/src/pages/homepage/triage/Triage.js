@@ -92,8 +92,22 @@ function Triage() {
     }).format(date);
   };
   
-  const handleLogout = () => {
-    navigate('/login');
+  // Function to handle going back
+  const handleGoBack = () => {
+    // Navigate to the Home Page
+
+    if (user.role === 'Admin') {
+        navigate('/homeAdmin');
+    } else if (user.role === 'Nurse') {
+        navigate('/homeNurse');
+    } else if (user.role === 'Doctor') {
+        navigate('/homeDoctor');
+    } else if (user.role === 'EMT') {
+        navigate('/homeEMT');
+    } else {
+        navigate('/homePatient');
+    }
+
   };
 
   return (
@@ -109,7 +123,7 @@ function Triage() {
               color="error"
               fullWidth
               style={{ padding: '20px' }}
-              onClick={() => navigate('/home')}
+              onClick={handleGoBack}
             >
               Home Page
             </Button>

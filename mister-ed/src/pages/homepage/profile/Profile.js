@@ -35,7 +35,20 @@ function Profile() {
 
   // Function to handle going back
   const handleGoBack = () => {
-    navigate('/home'); // Navigate to the Home Page
+    // Navigate to the Home Page
+
+    if (user.role === 'Admin') {
+      navigate('/homeAdmin');
+    } else if (user.role === 'Nurse') {
+      navigate('/homeNurse');
+    } else if (user.role === 'Doctor') {
+      navigate('/homeDoctor');
+    } else if (user.role === 'EMT') {
+      navigate('/homeEMT');
+    } else {
+      navigate('/homePatient');
+    }
+
   };
 
   // Function to handle updating info

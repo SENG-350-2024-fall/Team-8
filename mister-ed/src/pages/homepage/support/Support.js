@@ -49,6 +49,24 @@ function SupportTicketPage() {
         setTicketData({ ...ticketData, [name]: value });
     };
 
+    // Function to handle going back
+    const handleGoBack = () => {
+        // Navigate to the Home Page
+
+        if (user.role === 'Admin') {
+        navigate('/homeAdmin');
+        } else if (user.role === 'Nurse') {
+        navigate('/homeNurse');
+        } else if (user.role === 'Doctor') {
+        navigate('/homeDoctor');
+        } else if (user.role === 'EMT') {
+        navigate('/homeEMT');
+        } else {
+        navigate('/homePatient');
+        }
+
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -79,7 +97,18 @@ function SupportTicketPage() {
             if (response.ok) {
                 console.log('New Ticket Added:', ticketSubmission);
                 setError('');
-                navigate('/home'); // Redirect to home page after ticket generation
+                // Redirect to home page after ticket generation
+                if (user.role === 'Admin') {
+                    navigate('/homeAdmin');
+                } else if (user.role === 'Nurse') {
+                    navigate('/homeNurse');
+                } else if (user.role === 'Doctor') {
+                    navigate('/homeDoctor');
+                } else if (user.role === 'EMT') {
+                    navigate('/homeEMT');
+                } else {
+                    navigate('/homePatient');
+                }
             } else {
                 throw new Error('Failed to create ticket');
             }
@@ -134,7 +163,7 @@ function SupportTicketPage() {
                 variant="contained"
                 color="error"
                 style={{ marginTop: '20px', width: '100%' }}
-                onClick={() => navigate('/home')}
+                onClick={handleGoBack}
             >
                 Return to Home
             </Button>

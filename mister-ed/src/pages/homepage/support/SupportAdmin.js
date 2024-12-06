@@ -111,7 +111,7 @@ function AdminDashboard() {
                 <Button
                     variant="contained"
                     color="error"
-                    onClick={() => navigate('/home')}
+                    onClick={() => navigate('/homeAdmin')}
                 >
                     Return To Home
                 </Button>

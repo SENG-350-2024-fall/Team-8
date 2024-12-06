@@ -71,11 +71,17 @@ function Login() {
                 LOG.info(data);
                 setError('');
 
-                let redirectPath = '/home';
+                let redirectPath = '/homePatient';
                 if(accountType === 'EMT'){
                     DatabaseClient.toggleAvailability(foundUser.id, true); // Set available when logged in
                     redirectPath = '/homeEMT';
-                }
+                } else if (accountType === 'Admin') {
+                    redirectPath = '/homeAdmin';
+                } else if (accountType === 'Nurse') {
+                    redirectPath = '/homeNurse';                    
+                } else if (accountType === 'Doctor') {
+                    redirectPath = '/homeDoctor';                    
+                } 
                 navigate(redirectPath); // Redirect to landing page upon successful login
             } else {
                 LOG.info('Failed Login');
