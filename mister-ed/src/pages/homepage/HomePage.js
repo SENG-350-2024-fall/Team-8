@@ -70,6 +70,17 @@ function HomePage() {
             Support Admin
           </Button>
         </Grid>
+        <Grid item xs={6}>
+          <Button 
+            variant="contained" 
+            color="error" 
+            fullWidth 
+            style={{ padding: '20px' }} 
+            onClick={() => navigate('/appointment')} //Navigate to the Support Admin Page
+          >
+            Appointments
+          </Button>
+        </Grid>
       </Grid>
 
       {/* Logout Button */}
