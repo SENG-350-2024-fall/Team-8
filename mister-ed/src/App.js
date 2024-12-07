@@ -17,6 +17,7 @@ import Triage from './pages/homepage/triage/Triage';
 import RequestTriage from './pages/homepage/triage/RequestTriage';
 import Profile from './pages/homepage/profile/Profile';
 import HomeEMT from './pages/homepage/HomeEMT';
+import DispatchRequests from './pages/dispatchRequests';
 import { QueueProvider } from './context/QueueContext';
 import './App.css';
 
@@ -37,6 +38,7 @@ function App() {
           <Route path='/perform-triage' element={<QueueProvider><PerformTriage /></QueueProvider>} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/homeEMT" element={<HomeEMT />} />
+          <Route path="/dispatchRequests" element={<DispatchRequests />} />
           <Route path="/" element={<Navigate to="/landing" />} />
         </Routes>
       </div>

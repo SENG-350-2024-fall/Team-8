@@ -145,6 +145,44 @@ class DatabaseClient {
             body: JSON.stringify({ available: isAvailable }),
         });
     }
+
+    async fetchDispatchRequests() {
+        try {
+            const records = await this.fetch('triage_records');
+            return records.filter(record => record.dispatch === 'request');
+        } catch (error) {
+            console.error('Error fetching dispatch requests:', error);
+            throw error;
+        }
+    }
+
+    async fetchPatients() {
+        try {
+            return await this.fetch('patients');
+        } catch (error) {
+            console.error('Error fetching patients:', error);
+            throw error;
+        }
+    }
+
+    async fetchHospitals() {
+        try {
+            return await this.fetch('hospitals');
+        } catch (error) {
+            console.error('Error fetching hospitals:', error);
+            throw error;
+        }
+    }
+
+    async updateDispatchRequest(requestId, dispatchStatus) {
+        try {
+            const response = await this.patch('triage_records', requestId, { dispatch: dispatchStatus });
+            return response;
+        } catch (error) {
+            console.error('Error updating dispatch request:', error);
+            throw error;
+        }
+    }
 }
 
 export default DatabaseClient.getInstance(3001);

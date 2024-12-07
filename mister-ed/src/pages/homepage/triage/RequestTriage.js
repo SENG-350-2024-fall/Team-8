@@ -60,6 +60,7 @@ function RequestTriage() {
         nurseID: '', // Initially empty
         description: triageRequestDescription,
         outcome: '', // Initially empty
+        dispatch: '', //Initially empty
         hospitalID: selectedHospital,
       };
       
