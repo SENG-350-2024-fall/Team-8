@@ -1,32 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Grid, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import DatabaseClient from '../../clients/DatabaseClient';
 
-function HomePage() {
+function HomePatient() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  
 
-  const handleLogout = () => {
-    localStorage.clear();
+  useEffect(() => {
+    // Retrieve the current user from localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogout = async () => {
+    if (user) {
+        const response = await DatabaseClient.toggleAvailability(user.id, false); // Set unavailable when logged out
+        console.log('Availability update response:', response);
+    }
+    localStorage.removeItem('user'); // Clear the user from localStorage
     navigate('/login');
-  };
+};
 
-  return (
+return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '50px' }}>
       <h1>Home</h1>
 
       {/* Grid of buttons */}
       <Grid container spacing={2} justifyContent="center" style={{ maxWidth: '600px' }}>
-        <Grid item xs={6}>
-          <Button 
-            variant="contained" 
-            color="error" 
-            fullWidth 
-            style={{ padding: '20px' }} 
-            onClick={() => navigate('/triage')}
-          >
-            Triage
-          </Button>
-        </Grid>
         <Grid item xs={6}>
           <Button 
             variant="contained" 
@@ -55,9 +59,9 @@ function HomePage() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => navigate('/support')} //Navigate to the Support Page
+            onClick={() => navigate('/triage')}
           >
-            Support
+            Triage
           </Button>
         </Grid>
         <Grid item xs={6}>
@@ -66,9 +70,9 @@ function HomePage() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => navigate('/support-admin')} //Navigate to the Support Admin Page
+            onClick={() => navigate('/support')} //Navigate to the Support Page
           >
-            Support Admin
+            Support
           </Button>
         </Grid>
         <Grid item xs={6}>
@@ -99,5 +103,6 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default HomePatient;
+
 
