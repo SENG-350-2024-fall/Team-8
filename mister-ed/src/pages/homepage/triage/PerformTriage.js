@@ -19,6 +19,7 @@ const LOG = new Logger();
 function PerformTriage() {
     // State to manage the display of the form
     const [outcome, setOutcome] = useState('');
+    const [dispatch, setDispatch] = useState('');
     const [triageRecord, setTriageRecord] = useState(null);
     const [patient, setPatient] = useState(null);
     const [error, setError] = useState(null);
@@ -87,6 +88,7 @@ function PerformTriage() {
         // Add the outcome to the triage record
         const record = triageRecord;
         record.outcome = outcome;
+        record.dispatch = dispatch;
 
         // Add the nurseID to the triage record
         record.nurseID = user.id;
@@ -98,6 +100,7 @@ function PerformTriage() {
         setTriageRecord(null);
         setPatient(null);
         setOutcome('');
+        setDispatch('');
     };
 
     function handleAppointment() {
@@ -107,6 +110,17 @@ function PerformTriage() {
             ? (appointment_form.style.display = 'block')
             : (appointment_form.style.display = 'none');
     }
+
+    const handleDispatch = async (dispatchValue) => {
+        // Set the dispatch value and call handleAction
+        const record = { ...triageRecord, dispatch: dispatchValue, outcome, nurseID: user.id };
+        await DatabaseClient.updateRecord('triage_records', record);
+    
+        // Reset state after dispatch action
+        setTriageRecord(null);
+        setPatient(null);
+        setOutcome('');
+    };
 
     return (
         <div style={{ textAlign: 'center', margin: '20px' }}>
@@ -162,7 +176,7 @@ function PerformTriage() {
                             Book Appointment
                         </Button>
                         <Button
-                            onClick={handleAction}
+                            onClick={() => handleDispatch('request')}
                             type='submit'
                             variant='contained'
                             style={{ margin: '20px' }}

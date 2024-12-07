@@ -18,6 +18,7 @@ import RequestTriage from './pages/homepage/triage/RequestTriage';
 import Profile from './pages/homepage/profile/Profile';
 import Appointment from './pages/appointment/AppointmentView';
 import HomeEMT from './pages/homepage/HomeEMT';
+import DispatchRequests from './pages/dispatchRequests';
 import HomePatient from './pages/homepage/HomePatient';
 import HomeNurse from './pages/homepage/HomeNurse';
 import HomeAdmin from './pages/homepage/HomeAdmin';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/landing" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/dispatchRequests" element={<DispatchRequests />} />
           <Route path="/home" element={<ProtectedRoute><HomePage /></ProtectedRoute>} />
           <Route path="/support" element={<ProtectedRoute><SupportPage /></ProtectedRoute>} />
           <Route path="/support-admin" element={<ProtectedRoute><SupportAdminPage /></ProtectedRoute>} />

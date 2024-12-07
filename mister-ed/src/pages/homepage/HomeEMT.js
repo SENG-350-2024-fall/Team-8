@@ -37,7 +37,8 @@ function HomeEMT() {
             color="error" 
             fullWidth 
             style={{ padding: '20px' }} 
-            onClick={() => alert('Dispatch Requests Clicked')}
+            //onClick={() => alert('Dispatch Requests Clicked')}
+            onClick={() => navigate('/dispatchRequests')}
           >
             Dispatch Requests
           </Button>
